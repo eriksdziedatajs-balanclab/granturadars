@@ -87,6 +87,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .top nav a{text-decoration:none;color:var(--night-muted)}
 .top nav a:hover{color:var(--night-ink)}
 @media (max-width:900px){.top nav .lnk{display:none}}
+.top nav a.nav-cta{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:10px;background:var(--go-bg);color:var(--go-fg)}
+.top nav a.nav-cta:hover{background:var(--go-hover);color:var(--go-fg)}
+.top nav .btn-sm.alt{background:transparent;border:1.5px solid var(--night-line);color:var(--night-ink)}
+@media (max-width:600px){.top nav .btn-sm.alt{display:none}}
+
 .hero{position:relative;z-index:1;padding-block:28px 0}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
 .hero-copy{display:grid;gap:24px;padding-bottom:64px}
@@ -365,8 +370,8 @@ label.f span.opt-l{font-weight:400;color:var(--muted)}
       <a class="lnk" href="/cenas.html">Cenas</a>
       <a class="lnk" href="/programmas/">Ceļveži</a>
       <a class="lnk" href="#par-mums">Par mums</a>
-      <a class="lnk" href="/pieteikties.html">Pieteikties</a>
-      <button class="btn btn-sm" type="button" data-start>Pārbaudīt</button>
+      <button class="btn btn-sm alt" type="button" data-start>Tests</button>
+      <a class="nav-cta" href="/pieteikties.html">Pieteikties</a>
     </nav>
 
   </div>

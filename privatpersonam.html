@@ -87,6 +87,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .top nav a{text-decoration:none;color:var(--night-muted)}
 .top nav a:hover{color:var(--night-ink)}
 @media (max-width:900px){.top nav .lnk{display:none}}
+.top nav a.nav-cta{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:10px;background:var(--go-bg);color:var(--go-fg)}
+.top nav a.nav-cta:hover{background:var(--go-hover);color:var(--go-fg)}
+.top nav .btn-sm.alt{background:transparent;border:1.5px solid var(--night-line);color:var(--night-ink)}
+@media (max-width:600px){.top nav .btn-sm.alt{display:none}}
+
 .hero{position:relative;z-index:1;padding-block:28px 0}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
 .hero-copy{display:grid;gap:24px;padding-bottom:64px}
@@ -365,8 +370,8 @@ label.f span.opt-l{font-weight:400;color:var(--muted)}
       <a class="lnk" href="#ka">Kā tas strādā</a>
       <a class="lnk" href="/cenas.html">Cenas</a>
       <a class="lnk" href="/programmas/">Ceļveži</a>
-      <a class="lnk" href="/pieteikties.html?tips=privatpersona">Pieteikties</a>
-      <button class="btn btn-sm" type="button" data-start>Pārbaudīt</button>
+      <button class="btn btn-sm alt" type="button" data-start>Tests</button>
+      <a class="nav-cta" href="/pieteikties.html?tips=privatpersona">Pieteikties</a>
     </nav>
 
   </div>
@@ -389,7 +394,7 @@ label.f span.opt-l{font-weight:400;color:var(--muted)}
     </div>
     <div class="stage" role="img" aria-label="Radars atrod atbalsta programmas mājsaimniecībām">
       <canvas id="radar"></canvas>
-      <div class="float f1" aria-hidden="true"><span class="ag">Vides inv. fonds <span class="st">Atvērta</span></span><b>Saules paneļi un siltumsūkņi</b><span class="amt">70%, līdz 15 000 €</span></div>
+      <div class="float f1" aria-hidden="true"><span class="ag">Vides inv. fonds <span class="st">Atvērta</span></span><b>Saules paneļi un akumulatori</b><span class="amt">Līdz 70%, paneļiem ~4 000 €</span></div>
       <div class="float f2" aria-hidden="true"><span class="ag">ALTUM <span class="st">Atvērta</span></span><b>Mājokļa garantija ģimenēm</b><span class="amt">Pirmā iemaksa no 5%</span></div>
       <div class="float f3" aria-hidden="true"><span class="ag">Rīga <span class="st">Atvērta</span></span><b>"Rīga renovē"</b><span class="amt">Līdz 90% dokumentācijai</span></div>
     </div>
@@ -408,7 +413,7 @@ label.f span.opt-l{font-weight:400;color:var(--muted)}
   <div class="wrap">
     <div class="stat"><b id="sAll">–</b><span>programmas mājsaimniecībām</span></div>
     <div class="stat"><b id="sOpen">–</b><span>pieejamas šobrīd</span></div>
-    <div class="stat"><b>15 000 €</b><span>maks. atbalsts saules paneļiem un apkurei</span></div>
+    <div class="stat"><b>70%</b><span>atbalsts saules paneļiem un apkurei</span></div>
     <div class="stat"><b>85%</b><span>atbalsts Goda ģimenēm</span></div>
   </div>
 </div>
@@ -437,7 +442,7 @@ label.f span.opt-l{font-weight:400;color:var(--muted)}
           <span class="k">1. SOLIS</span><h3>Atbildi uz 6 jautājumiem</h3><p>Kur atrodas mājoklis, kāds tas ir, vai esi īpašnieks, ko plāno un vai ģimenē ir bērni.</p>
         </div>
         <div class="how-step">
-          <div class="mock" aria-hidden="true"><div class="mr"><small>Vides inv. fonds <span>Atvērta</span></small><b>Atjaunojamā enerģija mājsaimniecībām</b><span>70%, līdz 15 000 €</span></div><div class="mr"><small>Pašvaldība <span>Atvērta</span></small><b>Kanalizācijas pieslēgums</b><span>Līdz 2 000 €</span></div><div class="mr"><small>ALTUM <span>Atvērta</span></small><b>Mājokļa garantija ģimenēm</b><span>Pirmā iemaksa no 5%</span></div></div>
+          <div class="mock" aria-hidden="true"><div class="mr"><small>Vides inv. fonds <span>Atvērta</span></small><b>Atjaunojamā enerģija mājsaimniecībām</b><span>Līdz 70% iekārtas cenas</span></div><div class="mr"><small>Pašvaldība <span>Atvērta</span></small><b>Kanalizācijas pieslēgums</b><span>Līdz 2 000 €</span></div><div class="mr"><small>ALTUM <span>Atvērta</span></small><b>Mājokļa garantija ģimenēm</b><span>Pirmā iemaksa no 5%</span></div></div>
           <span class="k">2. SOLIS</span><h3>Saņem savu sarakstu</h3><p>Kāds atbalsts tev pienākas, cik tas ir un līdz kuram datumam jāpiesakās.</p>
         </div>
         <div class="how-step">
