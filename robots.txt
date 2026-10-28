@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /paldies.html
+
+Sitemap: https://granturadars.lv/sitemap.xml

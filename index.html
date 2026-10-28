@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grantu Radars – atrodi grantu savam uzņēmumam</title>
+<meta name="description" content="Bezmaksas tests 2 minūtēs: uzzini, kurām LIAA, ALTUM, CFLA, LAD un pašvaldību atbalsta programmām tavs uzņēmums varētu kvalificēties. Programmu karte, termiņi un palīdzība ar pieteikumu.">
+<meta property="og:title" content="Grantu Radars – atrodi grantu savam uzņēmumam 2 minūtēs">
+<meta property="og:description" content="Bezmaksas tests: kurām valsts, ES un pašvaldību programmām tavs uzņēmums varētu kvalificēties.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="lv_LV">
+<meta property="og:url" content="https://granturadars.lv/">
+<meta property="og:image" content="https://granturadars.lv/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://granturadars.lv/">
+<meta name="theme-color" content="#0B1F38">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/interdisplay-800.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/inter-400.woff" as="font" type="font/woff" crossorigin>
+<style>
+/* Layout: a night-blue "radar room" hero that shows the product working, then a light, information-dense page:
+   live deadlines, needs-based entry points, a browsable programme map, worked examples, comparison, after-award support. */
+@font-face{font-family:"Inter";src:url(fonts/inter-400.woff) format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:"Inter";src:url(fonts/inter-600.woff) format("woff");font-weight:600;font-display:swap}
+@font-face{font-family:"Inter Display";src:url(fonts/interdisplay-700.woff) format("woff");font-weight:700;font-display:swap}
+@font-face{font-family:"Inter Display";src:url(fonts/interdisplay-800.woff) format("woff");font-weight:800;font-display:swap}
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --ink:#132030; --muted:#56657A; --line:#DDE3EB; --quiet:#EBEFF4;
+  --night:#0B1F38; --night-2:#102A4A; --night-ink:#EAF1F8; --night-muted:#93A8C2; --night-line:rgba(147,168,194,.22);
+  --go-bg:#1D7A50; --go-fg:#FFFFFF; --go-hover:#166342;
+  --signal:#5FD39B; --blip:#F2B544;
+  --amber:#A8620A; --amber-soft:#FBEFD9; --open:#17683F; --open-soft:#DCF1E5; --soon:#35557F; --soon-soft:#E2EAF5;
+  --display:"Inter Display","Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r:16px; --maxw:1180px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0A1522; --surface:#111F2F; --ink:#E4EBF3; --muted:#98A8BA; --line:#203448; --quiet:#152738;
+  --night:#06111F; --night-2:#0B1C31;
+  --go-bg:#3FBF86; --go-fg:#04140C; --go-hover:#5BD09A;
+  --amber:#F2B544; --amber-soft:#33270F; --open:#6CD9A2; --open-soft:#103222; --soon:#9DB8E6; --soon-soft:#18283F;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0A1522; --surface:#111F2F; --ink:#E4EBF3; --muted:#98A8BA; --line:#203448; --quiet:#152738;
+  --night:#06111F; --night-2:#0B1C31;
+  --go-bg:#3FBF86; --go-fg:#04140C; --go-hover:#5BD09A;
+  --amber:#F2B544; --amber-soft:#33270F; --open:#6CD9A2; --open-soft:#103222; --soon:#9DB8E6; --soon-soft:#18283F;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;font-feature-settings:"cv11","ss01"}
+img,svg{max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.022em}
+h1{font-weight:800;font-size:clamp(40px,6.6vw,74px);line-height:.98}
+h2{font-weight:800;font-size:clamp(30px,4.2vw,46px);line-height:1.04}
+h3{font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+p{margin:0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.eyebrow::before{content:"";width:18px;height:2px;background:currentColor;opacity:.6}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border:0;border-radius:12px;background:var(--go-bg);color:var(--go-fg);font:600 17px/1 var(--body);cursor:pointer;text-decoration:none;transition:background .15s,transform .15s,box-shadow .15s}
+.btn:hover{background:var(--go-hover)}
+.btn:active{transform:translateY(1px)}
+.btn-sm{min-height:42px;padding:0 16px;font-size:15px;border-radius:10px}
+.btn-line{display:inline-flex;align-items:center;gap:8px;min-height:54px;padding:0 22px;border-radius:12px;border:1.5px solid var(--night-line);color:var(--night-ink);text-decoration:none;font-weight:600}
+.btn-line:hover{border-color:var(--night-muted)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);font:600 15px/1 var(--body);cursor:pointer}
+.btn-ghost:disabled{opacity:.4;cursor:default}
+:is(.btn,.btn-line,.btn-ghost,.opt,.chip,.need,.icon-btn,summary,a):focus-visible{outline:3px solid var(--signal);outline-offset:3px}
+
+/* ---------- header + hero (night) ---------- */
+.night{background:var(--night);color:var(--night-ink);position:relative;overflow:hidden}
+.night::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(60% 70% at 78% 40%,rgba(95,211,155,.14),transparent 60%),
+  radial-gradient(40% 50% at 10% 0%,rgba(80,130,200,.18),transparent 70%);pointer-events:none}
+.night::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--night-line) 1px,transparent 1px),linear-gradient(90deg,var(--night-line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(70% 80% at 60% 40%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(70% 80% at 60% 40%,#000 20%,transparent 75%);opacity:.35;pointer-events:none}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--night);transition:background .2s,border-color .2s;border-bottom:1px solid transparent}
+.top.scrolled{background:rgba(11,31,56,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom-color:var(--night-line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:31;background:var(--night)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;color:var(--night-ink)}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em}
+.logo svg{width:34px;height:34px;flex:none}
+.top nav{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:600}
+.top nav a{text-decoration:none;color:var(--night-muted)}
+.top nav a:hover{color:var(--night-ink)}
+@media (max-width:900px){.top nav .lnk{display:none}}
+.hero{position:relative;z-index:1;padding-block:28px 0}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.hero-copy{display:grid;gap:24px;padding-bottom:64px}
+.hero .eyebrow{color:var(--signal)}
+.hero h1 em{font-style:normal;color:var(--signal)}
+.hero .lead{font-size:clamp(18px,1.9vw,21px);color:var(--night-muted);max-width:36ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.meta{font-size:14px;color:var(--night-muted);display:flex;flex-wrap:wrap;gap:6px 16px}
+.meta span{display:inline-flex;align-items:center;gap:7px}
+.meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--signal)}
+.stage{position:relative;aspect-ratio:1/1;max-width:600px;width:100%;justify-self:end}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.float{position:absolute;background:rgba(16,42,74,.86);border:1px solid var(--night-line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:14px;padding:12px 14px;color:var(--night-ink);box-shadow:0 20px 40px -20px rgba(0,0,0,.6);width:min(250px,48%);display:grid;gap:4px;animation:bob 7s ease-in-out infinite}
+.float .ag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--night-muted);display:flex;justify-content:space-between;gap:8px}
+.float b{font-family:var(--display);font-size:15px;line-height:1.25}
+.float .amt{font-size:13px;color:var(--signal);font-weight:600}
+.float .st{font-size:11px;font-weight:600;padding:2px 7px;border-radius:999px;background:rgba(95,211,155,.16);color:var(--signal);letter-spacing:0;text-transform:none}
+.float .st.cl{background:rgba(242,181,68,.16);color:var(--blip)}
+.f1{left:-2%;top:12%}
+.f2{right:-2%;top:44%;animation-delay:-2.5s}
+.f3{left:6%;bottom:6%;animation-delay:-4.5s}
+@keyframes bob{50%{transform:translateY(-8px)}}
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:1fr;gap:0}
+  .hero-copy{padding-bottom:12px}
+  .stage{justify-self:center;max-width:520px;margin-bottom:-10px}
+}
+@media (max-width:520px){.float{width:56%;padding:10px 12px}.f2{display:none}}
+
+/* deadline ticker */
+.ticker{position:relative;z-index:1;border-top:1px solid var(--night-line);background:rgba(6,17,31,.5)}
+.ticker .wrap{display:flex;align-items:center;gap:16px;padding-block:14px}
+.tk-l{flex:none;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blip);display:flex;align-items:center;gap:8px}
+.tk-l::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blip);box-shadow:0 0 0 0 rgba(242,181,68,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 8px rgba(242,181,68,0)}100%{box-shadow:0 0 0 0 rgba(242,181,68,0)}}
+.tk-viewport{overflow:hidden;flex:1;min-width:0;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.tk-track{display:flex;gap:40px;width:max-content;animation:scroll 60s linear infinite;font-size:14px;color:var(--night-muted)}
+.tk-track:hover{animation-play-state:paused}
+.tk-track span b{color:var(--night-ink);font-weight:600}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- stats band ---------- */
+.stats{background:var(--surface);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.stat{padding:30px 20px;display:grid;gap:4px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat b{font-family:var(--display);font-weight:800;font-size:clamp(30px,3.6vw,44px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--muted)}
+@media (max-width:760px){.stats .wrap{grid-template-columns:1fr 1fr}.stat{padding:20px 14px}.stat:nth-child(3){border-left:0;padding-left:0}.stat:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* ---------- generic sections ---------- */
+section.block{padding-block:96px}
+.sec-head{display:grid;gap:14px;margin-bottom:40px;max-width:760px}
+.sec-head p{color:var(--muted);font-size:19px;max-width:58ch}
+.sec-head.row{max-width:none;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px}
+@media (max-width:760px){section.block{padding-block:72px}.sec-head.row{grid-template-columns:1fr}}
+
+/* needs grid */
+.needs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.need{display:grid;gap:14px;align-content:space-between;min-height:168px;text-align:left;padding:20px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s}
+.need:hover{transform:translateY(-2px);border-color:var(--go-bg);box-shadow:0 18px 30px -22px rgba(19,32,48,.4)}
+.need svg{width:40px;height:40px}
+.need b{font-family:var(--display);font-weight:700;font-size:18px;line-height:1.2;display:block}
+.need small{font-size:14px;color:var(--muted)}
+.need .cnt{font-size:13px;font-weight:600;color:var(--go-bg);display:flex;align-items:center;gap:6px}
+@media (max-width:960px){.needs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.need{min-height:150px;padding:16px}}
+
+/* pains */
+.pains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pain{border-radius:var(--r);padding:28px;display:grid;gap:14px;align-content:start;background:var(--surface);border:1px solid var(--line);position:relative}
+.pain .n{font-family:var(--display);font-weight:800;font-size:15px;color:var(--muted)}
+.pain q{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.12;letter-spacing:-.015em;quotes:"„" "”"}
+.pain p{color:var(--muted);font-size:16px}
+.pain .fix{font-size:15px;font-weight:600;color:var(--go-bg);border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+@media (max-width:900px){.pains{grid-template-columns:1fr}}
+
+/* how it works with mini UI */
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.how-step{display:grid;gap:14px;align-content:start}
+.how-step .k{font-family:var(--display);font-weight:800;font-size:15px;color:var(--go-bg);letter-spacing:.02em}
+.how-step p{color:var(--muted);font-size:16px}
+.mock{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;height:220px;overflow:hidden;display:grid;gap:8px;align-content:start;box-shadow:0 24px 40px -32px rgba(19,32,48,.45)}
+.mock .mq{font-family:var(--display);font-weight:700;font-size:15px}
+.mock .mbar{height:5px;border-radius:3px;background:var(--line);overflow:hidden}
+.mock .mbar i{display:block;width:57%;height:100%;background:var(--go-bg)}
+.mock .mo{border:1.5px solid var(--line);border-radius:9px;padding:8px 10px;font-size:13px;display:flex;align-items:center;gap:8px}
+.mock .mo::before{content:"";width:13px;height:13px;border-radius:4px;border:1.5px solid var(--line);flex:none}
+.mock .mo.on{border-color:var(--go-bg)}
+.mock .mo.on::before{background:var(--go-bg);border-color:var(--go-bg)}
+.mock .mr{border:1px solid var(--line);border-radius:10px;padding:9px 10px;display:grid;gap:2px}
+.mock .mr small{font-size:11px;color:var(--muted);font-weight:600;display:flex;justify-content:space-between}
+.mock .mr b{font-size:13px}
+.mock .mr span{font-size:12px;color:var(--go-bg);font-weight:600}
+.mock .ck{display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mock .ck i{width:16px;height:16px;border-radius:50%;background:var(--open-soft);display:grid;place-items:center;flex:none}
+.mock .ck i::after{content:"";width:6px;height:3px;border-left:2px solid var(--open);border-bottom:2px solid var(--open);transform:rotate(-45deg) translate(1px,-1px)}
+.mock .ck.todo i{background:var(--quiet)}
+.mock .ck.todo i::after{display:none}
+@media (max-width:900px){.how{grid-template-columns:1fr}.mock{height:auto}}
+
+/* programme browser */
+.browser{display:grid;gap:18px}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:600 14px/1 var(--body);padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.search{display:flex;align-items:center;gap:10px;min-height:48px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);max-width:420px}
+.search input{border:0;background:transparent;font:inherit;font-size:16px;color:var(--ink);flex:1;min-width:0;outline:none}
+.search:focus-within{outline:3px solid var(--signal);outline-offset:2px}
+.grid-p{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:960px){.grid-p{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.grid-p{grid-template-columns:1fr}}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:8px;align-content:start}
+.pcard-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.agency{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.badge{font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.badge.open{background:var(--open-soft);color:var(--open)}
+.badge.closing{background:var(--amber-soft);color:var(--amber)}
+.badge.soon,.badge.yearly{background:var(--soon-soft);color:var(--soon)}
+.pcard h3{font-size:18px}
+.pcard .sum{font-weight:600;font-size:15px}
+.pcard .when{font-size:14px;color:var(--muted)}
+.pcard .why{font-size:14px;color:var(--ink);background:var(--quiet);border-radius:8px;padding:8px 10px}
+.pcard .note{font-size:14px;color:var(--amber)}
+.pcard a{font-size:14px;font-weight:600;color:var(--go-bg);text-decoration-thickness:1px;text-underline-offset:3px;justify-self:start}
+.more{justify-self:center}
+.browser .count{font-size:14px;color:var(--muted)}
+
+/* examples */
+.examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ex{background:var(--night);color:var(--night-ink);border-radius:var(--r);padding:24px;display:grid;gap:14px;align-content:start;position:relative;overflow:hidden}
+.ex::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;border:1px solid var(--night-line);box-shadow:0 0 0 30px rgba(147,168,194,.04),0 0 0 60px rgba(147,168,194,.03)}
+.ex .who{font-size:13px;color:var(--night-muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.ex h3{font-size:21px}
+.ex .big{font-family:var(--display);font-weight:800;font-size:46px;line-height:1;color:var(--signal);letter-spacing:-.03em}
+.ex .big small{font-size:15px;font-weight:600;color:var(--night-muted);letter-spacing:0;margin-left:6px}
+.ex ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ex li{font-size:14px;padding-left:18px;position:relative;color:var(--night-ink)}
+.ex li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--blip)}
+.ex li span{color:var(--night-muted)}
+.ex-note{margin-top:14px;font-size:13px;color:var(--muted)}
+@media (max-width:960px){.examples{grid-template-columns:1fr}}
+
+/* comparison */
+.cmp-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.cmp{width:100%;border-collapse:collapse;min-width:720px;font-size:15px}
+.cmp th,.cmp td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp tr:last-child td{border-bottom:0}
+.cmp thead th{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.cmp thead th.us{color:var(--go-bg)}
+.cmp td.us{background:color-mix(in srgb,var(--go-bg) 7%,var(--surface));font-weight:600}
+.cmp td:first-child{font-weight:600;width:24%}
+.cmp .y,.cmp .n,.cmp .m{display:inline-flex;align-items:center;gap:8px}
+.cmp .y::before,.cmp .n::before,.cmp .m::before{content:"";width:10px;height:10px;border-radius:50%;flex:none}
+.cmp .y::before{background:var(--open)}
+.cmp .n::before{background:#C9D2DD}
+.cmp .m::before{background:var(--blip)}
+
+/* after award */
+.after{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.after .sec-head{margin-bottom:0}
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+.timeline li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding-bottom:22px;position:relative}
+.timeline li::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--line)}
+.timeline li:last-child::before{display:none}
+.timeline .dot{width:44px;height:44px;border-radius:12px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--go-bg)}
+.timeline b{font-family:var(--display);font-size:18px;display:block;margin-top:2px}
+.timeline p{font-size:15px;color:var(--muted)}
+.timeline .we{display:inline-block;margin-top:6px;font-size:13px;font-weight:600;color:var(--open);background:var(--open-soft);padding:3px 9px;border-radius:999px}
+@media (max-width:900px){.after{grid-template-columns:1fr;gap:32px}}
+
+/* honest + faq */
+.honest{background:var(--quiet);border-radius:var(--r);padding:36px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px;align-items:start}
+.honest p{font-size:19px}
+@media (max-width:760px){.honest{grid-template-columns:1fr;padding:26px}}
+.faq-grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:48px;align-items:start}
+@media (max-width:900px){.faq-grid{grid-template-columns:1fr;gap:24px}}
+.faq{display:grid;gap:10px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.faq summary{list-style:none;cursor:pointer;padding:18px 52px 18px 20px;font-weight:600;font-size:17px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:22px;top:50%;width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq .ans{padding:0 20px 20px;color:var(--muted);font-size:16px;max-width:68ch}
+
+/* final */
+.final{position:relative;z-index:1;padding-block:110px;text-align:center}
+.final .wrap{display:grid;gap:20px;justify-items:center}
+.final h2{font-size:clamp(34px,5vw,56px);max-width:16ch}
+.final p{color:var(--night-muted);font-size:19px;max-width:44ch}
+footer{background:var(--night);color:var(--night-muted);font-size:14px;border-top:1px solid var(--night-line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-block:28px 110px}
+footer a{color:var(--night-ink)}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+@media (min-width:861px){footer .wrap{padding-bottom:32px}}
+
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:25;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .25s}
+.sticky-cta.show{transform:none}
+.sticky-cta .btn{width:100%}
+@media (min-width:861px){.sticky-cta{display:none}}
+
+/* ---------- test dialog ---------- */
+dialog#tests{border:0;padding:0;margin:auto;width:min(720px,100%);max-height:min(880px,100%);height:100%;background:var(--bg);color:var(--ink);border-radius:20px;box-shadow:0 40px 80px -20px rgba(0,0,0,.45)}
+dialog#tests::backdrop{background:rgba(6,17,31,.7);backdrop-filter:blur(3px)}
+@media (max-width:720px){dialog#tests{border-radius:0;max-height:100%;max-width:100%;width:100%;height:100%}}
+.t-shell{display:grid;grid-template-rows:auto 1fr auto;height:100%}
+.t-head{display:flex;align-items:center;gap:14px;padding:calc(14px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) 14px max(20px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line)}
+.t-prog{flex:1;display:grid;gap:6px}
+.t-prog span{font-size:13px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.t-bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.t-bar i{display:block;height:100%;background:var(--go-bg);border-radius:3px;transition:width .3s}
+.icon-btn{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none}
+.t-body{overflow-y:auto;padding:28px max(20px,env(safe-area-inset-right,0px)) 28px max(20px,env(safe-area-inset-left,0px));-webkit-overflow-scrolling:touch}
+.t-q{display:grid;gap:8px;margin-bottom:22px}
+.t-q h2{font-size:clamp(24px,4vw,32px)}
+.t-q p{color:var(--muted);font-size:15px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;min-height:58px;padding:12px 16px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);font:500 17px/1.3 var(--body);text-align:left;cursor:pointer;transition:border-color .12s,background .12s}
+.opt:hover{border-color:var(--muted)}
+.opt .mark{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center}
+.opts.multi .opt .mark{border-radius:6px}
+.opt[aria-pressed="true"],.opt[aria-checked="true"]{border-color:var(--go-bg);background:color-mix(in srgb,var(--go-bg) 9%,var(--surface))}
+.opt[aria-pressed="true"] .mark,.opt[aria-checked="true"] .mark{border-color:var(--go-bg);background:var(--go-bg)}
+.opt[aria-pressed="true"] .mark::after,.opt[aria-checked="true"] .mark::after{content:"";width:8px;height:8px;border-radius:2px;background:var(--go-fg)}
+.t-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px max(20px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));border-top:1px solid var(--line)}
+.t-foot .btn{min-height:46px}
+.res-head{display:grid;gap:10px;margin-bottom:22px}
+.res-head h2{font-size:clamp(26px,4.4vw,34px)}
+.res-head p{color:var(--muted);font-size:15px}
+.res-list{display:grid;gap:12px}
+.res-sub{margin:30px 0 12px;display:grid;gap:4px}
+.res-sub h3{font-size:20px}
+.res-sub p{color:var(--muted);font-size:14px}
+.empty{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;color:var(--muted)}
+.lead-form{margin-top:32px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:14px}
+.lead-form h3{font-size:22px}
+.lead-form p.lead{color:var(--muted);font-size:15px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fields .full{grid-column:1/-1}
+@media (max-width:560px){.fields{grid-template-columns:1fr}}
+label.f{display:grid;gap:6px;font-size:14px;font-weight:600}
+label.f span.opt-l{font-weight:400;color:var(--muted)}
+.f input{font:inherit;font-size:16px;min-height:48px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);width:100%;min-width:0}
+.f input:focus-visible{outline:3px solid var(--signal);outline-offset:1px;border-color:var(--go-bg)}
+.consent{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;font-size:14px}
+.consent input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--go-bg)}
+.consent a{color:var(--go-bg);font-weight:600}
+.form-msg{font-size:15px;min-height:1.4em}
+.form-msg.err{color:#C2410C}
+.form-ok{background:var(--open-soft);border-radius:12px;padding:16px;font-size:16px}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.disclaimer{margin-top:22px;font-size:13px;color:var(--muted)}
+
+.top .wrap{flex-wrap:wrap;padding-bottom:0}
+.seg{order:3;width:100%;display:flex;gap:28px;border-top:1px solid var(--night-line);margin-top:2px}
+.seg a{display:flex;align-items:center;gap:8px;padding:12px 0 11px;color:var(--night-muted);font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.seg a:hover{color:var(--night-ink)}
+.seg a[aria-current="page"]{color:var(--night-ink);border-bottom-color:var(--signal)}
+.seg svg{width:18px;height:18px;flex:none}
+.seg a:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+@media (max-width:760px){.seg{gap:0}.seg a{flex:1;justify-content:center}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Grantu Radars, sākums">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#14304F"/><circle cx="32" cy="32" r="20" fill="none" stroke="#5FD39B" stroke-opacity=".35" stroke-width="3"/><circle cx="32" cy="32" r="11" fill="none" stroke="#5FD39B" stroke-opacity=".35" stroke-width="3"/><path d="M32 32 L32 12 A20 20 0 0 1 50.3 24 Z" fill="#5FD39B" fill-opacity=".55"/><circle cx="43" cy="22" r="4" fill="#F2B544"/></svg>
+      Grantu Radars
+    </a>
+    <nav class="seg" aria-label="Kam meklē atbalstu"><a href="/" aria-current="page"><svg viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="8" width="14" height="25" rx="1.5"/><path d="M23 16h8v17h-8"/></g></svg>Uzņēmumam</a><a href="/privatpersonam.html"><svg viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 19l13-11 13 11M10 17v15h20V17"/></g></svg>Privātpersonai</a></nav>
+    <nav aria-label="Galvenā">
+      <a class="lnk" href="#karte">Programmu karte</a>
+      <a class="lnk" href="/cenas.html">Cenas</a>
+      <a class="lnk" href="/programmas/">Ceļveži</a>
+      <a class="lnk" href="#par-mums">Par mums</a>
+      <button class="btn btn-sm" type="button" data-start>Pārbaudīt</button>
+    </nav>
+
+  </div>
+</header>
+<div class="night">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Valsts, ES un pašvaldību atbalsts uzņēmumiem</span>
+      <h1>Atrodi grantu savam uzņēmumam <em>2&nbsp;minūtēs</em></h1>
+      <p class="lead">Grantu Radars parāda, kurām valsts, ES un pašvaldību atbalsta programmām tavs uzņēmums varētu kvalificēties. Bez juridiskās valodas un bez saistībām.</p>
+      <div class="hero-cta">
+        <button class="btn" type="button" data-start id="heroBtn">Pārbaudīt, kam es kvalificējos
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a class="btn-line" href="#karte">Skatīt programmu karti</a>
+      </div>
+      <div class="meta"><span>Bezmaksas tests</span><span>7 jautājumi</span><span>Aptuveni 2 minūtes</span><span>Bez reģistrācijas</span></div>
+    </div>
+    <div class="stage" role="img" aria-label="Radars atrod atbalsta programmas: LIAA, ALTUM, CFLA, LAD un pašvaldības">
+      <canvas id="radar"></canvas>
+      <div class="float f1" aria-hidden="true"><span class="ag">LIAA <span class="st">Atvērta</span></span><b>MVU eksporta atbalsta plāns</b><span class="amt">60%, līdz 40 000 € gadā</span></div>
+      <div class="float f2" aria-hidden="true"><span class="ag">ALTUM <span class="st">Atvērta</span></span><b>Uzņēmējdarbības zaļināšana</b><span class="amt">Atlaide līdz 30% no aizdevuma</span></div>
+      <div class="float f3" aria-hidden="true"><span class="ag">LIAA <span class="st">Atvērta</span></span><b>Inovāciju vaučeri</b><span class="amt">45–100%, līdz 25 000 €</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-label="Tuvākie termiņi">
+  <div class="wrap">
+    <span class="tk-l">Tuvākie termiņi</span>
+    <div class="tk-viewport"><div class="tk-track" id="ticker"></div></div>
+  </div>
+</div>
+</div>
+
+<div class="stats" aria-label="Programmu karte skaitļos">
+  <div class="wrap">
+    <div class="stat"><b id="sAll">–</b><span>programmas vienuviet</span></div>
+    <div class="stat"><b id="sOpen">–</b><span>atvērtas šobrīd</span></div>
+    <div class="stat"><b id="sSoon">–</b><span>atvērsies drīzumā</span></div>
+    <div class="stat"><b>5</b><span>iestādes un 20+ pašvaldības</span></div>
+  </div>
+</div>
+
+<main>
+  <section class="block" aria-labelledby="h-needs">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Sāc ar to, ko plāno</span>
+        <h2 id="h-needs">Ko tu gribi izdarīt nākamajā gadā?</h2>
+        <p>Izvēlies mērķi, un tests sāksies ar to. Skaitlis rāda, cik programmu kartē der šim mērķim.</p>
+      </div>
+      <div class="needs" id="needs"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="h-pains" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Pazīstami šķēršļi</span>
+        <h2 id="h-pains">Kāpēc daudzi uzņēmumi atbalstam nemaz nepiesakās</h2>
+      </div>
+      <div class="pains">
+        <article class="pain"><span class="n">01</span><q>Es nezinu, kādas programmas vispār ir.</q><p>LIAA, ALTUM, CFLA, LAD, pašvaldības – katrai sava mājaslapa, savi noteikumi un termiņi. Grūti saprast, kas attiecas tieši uz tevi.</p><p class="fix">Viena karte un personīgs saraksts</p></article>
+        <article class="pain"><span class="n">02</span><q>Pieteikums izskatās pārāk sarežģīts.</q><p>Garas veidlapas, budžeta tabulas un nesaprotami termini. Šķiet, ka bez konsultanta nevar.</p><p class="fix">Sagatavojam pieteikumu kopā ar tevi</p></article>
+        <article class="pain"><span class="n">03</span><q>Baidos no kontroles un atmaksas.</q><p>Ko drīkst un ko nedrīkst pēc piešķiršanas? Ko darīt, ja kaut ko nokavēšu? Neziņa atbaida vairāk nekā pats darbs.</p><p class="fix">Pavadām arī pēc piešķiršanas</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="ka" aria-labelledby="h-how" style="background:var(--surface);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Kā tas strādā</span>
+        <h2 id="h-how">No jautājuma līdz pieteikumam trīs soļos</h2>
+      </div>
+      <div class="how">
+        <div class="how-step">
+          <div class="mock" aria-hidden="true"><span class="mq">Ko plānojat nākamajos 12 mēnešos?</span><div class="mbar"><i></i></div><span class="mo on">Iegādāties iekārtas vai tehniku</span><span class="mo on">Eksports, izstādes ārzemēs</span><span class="mo">Jauns produkts vai pakalpojums</span><span class="mo">Darbinieku apmācības</span></div>
+          <span class="k">1. SOLIS</span><h3>Atbildi uz 7 jautājumiem</h3><p>Reģions, uzņēmuma vecums, darbinieku skaits, nozare, plāni nākamajiem 12 mēnešiem, investīcijas apjoms un vai plāno prototipu vai sadarbību ar zinātniekiem.</p>
+        </div>
+        <div class="how-step">
+          <div class="mock" aria-hidden="true"><div class="mr"><small>LIAA <span>Atvērta</span></small><b>MVU eksporta atbalsta plāns</b><span>60%, līdz 40 000 € gadā</span></div><div class="mr"><small>ALTUM <span>Atvērta</span></small><b>Investīciju aizdevumi</b><span>Līdz 5 milj. €</span></div><div class="mr"><small>Capitalia <span>Atvērta</span></small><b>Mikroaizdevumi</b><span>Līdz 50 000 €</span></div></div>
+          <span class="k">2. SOLIS</span><h3>Saņem savu programmu sarakstu</h3><p>Kuras programmas tev varētu derēt, kāds ir atbalsta apmērs un termiņi, un ar ko sākt.</p>
+        </div>
+        <div class="how-step">
+          <div class="mock" aria-hidden="true"><span class="mq">Pieteikums: MVU eksporta plāns</span><span class="ck"><i></i>Atbilstības pārbaude</span><span class="ck"><i></i>Budžets un tāme</span><span class="ck"><i></i>Darbību plāns</span><span class="ck todo"><i></i>Iesniegšana LIAA</span><span class="ck todo"><i></i>Atskaite pēc 12 mēn.</span></div>
+          <span class="k">3. SOLIS</span><h3>Izlem, vai vēlies palīdzību</h3><p>Mēs varam sagatavot pieteikumu un palīdzēt arī pēc piešķiršanas: ar atskaitēm, termiņiem un skaidrojumu, kas ir atļauts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="karte" aria-labelledby="h-map">
+    <div class="wrap browser">
+      <div class="sec-head row" style="margin-bottom:6px">
+        <div style="display:grid;gap:14px"><span class="eyebrow">Programmu karte</span><h2 id="h-map">Visas programmas vienuviet</h2><p style="color:var(--muted);font-size:19px;max-width:58ch">Summas, termiņi un saites uz oficiālajiem avotiem. Dati atjaunoti <span class="dDate"></span>.</p></div>
+        <label class="search" for="q"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="q" type="search" placeholder="Meklēt, piem., eksports, saules paneļi" autocomplete="off"></label>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrēt pēc iestādes"></div>
+      <p class="count" id="count" aria-live="polite"></p>
+      <div class="grid-p" id="map"></div>
+      <button class="btn-ghost more" type="button" id="more">Rādīt visas</button>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="h-ex" style="padding-top:24px">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Piemēri</span>
+        <h2 id="h-ex">Ko tests atrod dažādiem uzņēmumiem</h2>
+        <p>Trīs iedomāti uzņēmumi, kuriem rezultāts aprēķināts ar to pašu testu, ko vari aizpildīt tu.</p>
+      </div>
+      <div class="examples" id="examples"></div>
+      <p class="ex-note">Ilustratīvi piemēri, nevis mūsu klienti. Atbilstība nenozīmē, ka atbalsts tiks piešķirts.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="h-cmp" style="background:var(--surface);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Salīdzinājums</span>
+        <h2 id="h-cmp">Pats, ar konsultantu vai ar Grantu Radaru</h2>
+      </div>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead><tr><th scope="col"></th><th scope="col">Meklē pats</th><th scope="col">Tradicionāls konsultants</th><th scope="col" class="us">Grantu Radars</th></tr></thead>
+          <tbody>
+            <tr><td>Atrast piemērotas programmas</td><td><span class="m">Stundas 5+ iestāžu un pašvaldību lapās</span></td><td><span class="y">Jā, bieži maksas konsultācijā</span></td><td class="us"><span class="y">2 minūtēs, bez maksas</span></td></tr>
+            <tr><td>Pašvaldību konkursi</td><td><span class="m">Jāseko katra novada lapai</span></td><td><span class="m">Atkarīgs no konsultanta</span></td><td class="us"><span class="y">Kartē iekļauti</span></td></tr>
+            <tr><td>Termiņu brīdinājumi</td><td><span class="n">Nav</span></td><td><span class="m">Esošajiem klientiem</span></td><td class="us"><span class="y">E-pastā, ja vēlies</span></td></tr>
+            <tr><td>Cena zināma iepriekš</td><td><span class="y">Bez maksas, bet tavs laiks</span></td><td><span class="m">Bieži netiek publicēta</span></td><td class="us"><span class="y">Vienojamies pirms darba</span></td></tr>
+            <tr><td>Pieteikuma sagatavošana</td><td><span class="m">Pats</span></td><td><span class="y">Jā</span></td><td class="us"><span class="y">Jā</span></td></tr>
+            <tr><td>Palīdzība pēc piešķiršanas</td><td><span class="n">Nav</span></td><td><span class="m">Ne vienmēr</span></td><td class="us"><span class="y">Atskaites, termiņi, skaidrojumi</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sagatavosana" aria-labelledby="h-svc">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Pieteikuma sagatavošana</span>
+        <h2 id="h-svc">Pieteikumu raksta mūsu aģenti, pārbauda cilvēks</h2>
+        <p>Kad zini, kurai programmai pieteikties, mēs sagatavojam dokumentus. Mākslīgā intelekta aģenti izpēta programmas noteikumus un sagatavo melnrakstus, bet speciālists tos pārbauda pirms iesniegšanas.</p>
+      </div>
+      <div class="svc">
+        <article><span class="who">Aģents</span><h3>Atbilstības pārbaude</h3><p>Programmas noteikumi, de minimis, attiecināmās izmaksas un iespējamie šķēršļi tavam uzņēmumam.</p></article>
+        <article><span class="who">Aģents</span><h3>Projekta apraksts</h3><p>Mērķi, aktivitātes, rezultāti un rādītāji tādā valodā un struktūrā, ko prasa iestāde.</p></article>
+        <article><span class="who">Aģents</span><h3>Budžets un tāmes</h3><p>Attiecināmo izmaksu tabula, cenu aptaujas un naudas plūsma projekta laikam.</p></article>
+        <article><span class="who h">Speciālists</span><h3>Pārbaude un iesniegšana</h3><p>Cilvēks pārskata visu dokumentu komplektu, un tu iesniedz pats vai ar mūsu palīdzību.</p></article>
+      </div>
+      <div class="svc-foot">
+        <button class="btn" type="button" data-start>Sākt ar bezmaksas testu</button>
+        <p>Pārbaude ir bez maksas. Sagatavošana – no 590 €, un 5% no piešķirtā tikai tad, ja atbalstu piešķir. <a href="/cenas.html" style="color:var(--go-bg);font-weight:600">Skatīt cenas</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="h-after">
+    <div class="wrap after">
+      <div class="sec-head">
+        <span class="eyebrow">Pēc piešķiršanas</span>
+        <h2 id="h-after">Nauda ir tikai sākums. Mēs paliekam blakus.</h2>
+        <p>Atbalstu var nākties atmaksāt, ja netiek ievēroti līguma nosacījumi. Tāpēc palīdzam visā projekta laikā, nevis tikai līdz iesniegšanai. Palīdzam arī ar <a href="/finansesana.html" style="color:var(--go-bg);font-weight:600">projekta finansēšanu līdz atbalsta izmaksai</a>.</p>
+      </div>
+      <ol class="timeline">
+        <li><span class="dot">1</span><div><b>Līgums ar iestādi</b><p>Saprotam nosacījumus un rādītājus, kas jāsasniedz.</p><span class="we">Izskaidrojam līgumu vienkāršā valodā</span></div></li>
+        <li><span class="dot">2</span><div><b>Iepirkums</b><p>Daudzās programmās piegādātāji jāizvēlas pēc noteikumiem.</p><span class="we">Palīdzam ar cenu aptauju</span></div></li>
+        <li><span class="dot">3</span><div><b>Ieviešana un maksājumi</b><p>Izmaksas jāpierāda ar rēķiniem un maksājuma pieprasījumiem.</p><span class="we">Sagatavojam pieprasījumus</span></div></li>
+        <li><span class="dot">4</span><div><b>Uzraudzības periods</b><p>ES fondu projektos parasti 3–5 gadi, kad iegādāto nedrīkst brīvi pārdot vai mainīt mērķi.</p><span class="we">Atgādinām termiņus un atskaites</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="par-mums" aria-labelledby="h-about" style="background:var(--surface);border-block:1px solid var(--line)">
+    <div class="wrap about">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="eyebrow">Par mums</span>
+        <h2 id="h-about">Aiz radara ir cilvēks, kas atbild par rezultātu</h2>
+        <p>Grantu Radars apvieno programmu datubāzi, mākslīgā intelekta aģentus un cilvēka pārbaudi. Aģenti katru dienu seko programmām un sagatavo dokumentus, bet par katru pieteikumu, kas aiziet pie klienta, atbild cilvēks.</p>
+        <div class="founder">
+          <div class="who"><!-- Aizstāt ar foto: <img class="av" src="/eriks.jpg" alt="Ēriks Dziedātājs"> --><span class="av" aria-hidden="true">ĒD</span><div><b>Ēriks Dziedātājs</b><small>Dibinātājs · uzņēmējs</small></div></div>
+          <p>Vadu vairākus uzņēmumus Latvijā un zinu, cik laika prasa atrast piemērotu atbalsta programmu un saprast tās noteikumus. Grantu Radaru izveidoju, lai atbalstu varētu saņemt arī tie, kam nav laika vai sava konsultanta.</p>
+          <p class="req">SIA "Home Project" · <a href="mailto:info@granturadars.lv">info@granturadars.lv</a></p>
+        </div>
+      </div>
+      <ul class="princ">
+        <li><b>Godīga atbilde</b><span>Ja redzam, ka pieteikties nav vērts, to pasakām uzreiz un naudu neņemam.</span></li>
+        <li><b>Tikai patiesi dati</b><span>Nepalielinām izmaksas un neizdomājam rādītājus. Tas pasargā tevi no atbalsta atmaksas.</span></li>
+        <li><b>Atklātas cenas</b><span>Cenu zini pirms darba. Lielāko daļu maksā tikai tad, ja atbalstu piešķir.</span></li>
+        <li><b>Oficiāli avoti</b><span>Katru apgalvojumu par programmu pārbaudām MK noteikumos un iestāžu materiālos.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="h-honest">
+    <div class="wrap">
+      <div class="honest">
+        <h2 id="h-honest" style="font-size:clamp(26px,3.2vw,36px)">Godīgi par rezultātu</h2>
+        <p>Mēs nevaram garantēt, ka atbalstu piešķirs. Lēmumu pieņem programmas administrētājs, piemēram, LIAA vai CFLA. Mēs apsolām skaidru informāciju, rūpīgu sagatavošanu un godīgu vērtējumu, vai pieteikties vispār ir vērts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="jautajumi" aria-labelledby="h-faq" style="padding-top:24px">
+    <div class="wrap faq-grid">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="eyebrow">Biežāk uzdotie jautājumi</span>
+        <h2 id="h-faq">Ko parasti jautā</h2>
+        <p>Neatradi atbildi? Raksti uz <a href="mailto:info@granturadars.lv">info@granturadars.lv</a>.</p>
+      </div>
+      <div class="faq">
+        <details><summary>Cik maksā pieteikuma sagatavošana?</summary><div class="ans">Pārbaude ir bez maksas. Uzņēmumu pieteikumiem – fiksēta maksa 590 € (konkursa programmām 990 €) un 5% no piešķirtā atbalsta tikai pēc pozitīva lēmuma. Sīkāk – <a href="/cenas.html">cenu lapā</a>.</div></details>
+        <details><summary>Vai tests tiešām ir bezmaksas?</summary><div class="ans">Jā. Tests un programmu saraksts ir bez maksas un bez saistībām. Par pieteikuma sagatavošanu vienosimies atsevišķi, ja tu to vēlēsies.</div></details>
+        <details><summary>Mans uzņēmums ir mazs un nekad nav pieteicies. Vai tas vispār ir priekš manis?</summary><div class="ans">Jā, tieši tādiem uzņēmumiem Grantu Radars ir domāts. Daudzas programmas ir paredzētas mikro un maziem uzņēmumiem, arī jauniem.</div></details>
+        <details><summary>Kas notiek pēc piešķiršanas? Vai naudu var nākties atmaksāt?</summary><div class="ans">Atmaksa parasti draud, ja netiek ievēroti līguma nosacījumi, piemēram, nauda izlietota citiem mērķiem vai nav iesniegtas atskaites. Tāpēc mēs palīdzam arī pēc piešķiršanas: atgādinām termiņus un skaidrojam, kas ir atļauts.</div></details>
+        <details><summary>Cik precīzs ir testa rezultāts?</summary><div class="ans">Tests ir pirmais filtrs, nevis juridisks atzinums. Tas parāda programmas, kurām tu varētu atbilst. Pirms pieteikšanās noteikumi vienmēr jāpārbauda oficiālajā avotā, un mēs to palīdzam izdarīt.</div></details>
+        <details><summary>Vai jūs esat valsts iestāde?</summary><div class="ans">Nē. Grantu Radars ir privāts uzņēmums. Lēmumu par atbalstu pieņem LIAA, ALTUM, CFLA, LAD vai pašvaldība.</div></details>
+        <details><summary>Ko jūs darīsiet ar maniem datiem?</summary><div class="ans">Izmantosim tos tikai, lai sagatavotu tavu programmu sarakstu un, ja tu piekriti, sūtītu brīdinājumus. Datus nepārdodam un nenododam trešajām personām. Sīkāk – <a href="privatuma-politika.html">privātuma politikā</a>.</div></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="night">
+  <section class="final" aria-labelledby="h-final">
+    <div class="wrap">
+      <span class="eyebrow" style="color:var(--signal)">2 minūtes</span>
+      <h2 id="h-final">Uzzini, kas pienākas tavam uzņēmumam</h2>
+      <p>7 jautājumi, bez reģistrācijas. Rezultātu redzēsi uzreiz.</p>
+      <button class="btn" type="button" data-start>Pārbaudīt, kam es kvalificējos</button>
+    </div>
+  </section>
+</div>
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr">2026</span> Grantu Radars · SIA "Home Project"</div>
+    <nav aria-label="Kājene"><a href="/">Uzņēmumiem</a><a href="/privatpersonam.html">Privātpersonām</a><a href="/programmas/">Programmu ceļveži</a><a href="/cenas.html">Cenas</a><a href="/finansesana.html">Finansēšana</a><a href="/noteikumi.html">Lietošanas noteikumi</a><a href="/privatuma-politika.html">Privātuma politika</a><a href="mailto:info@granturadars.lv">info@granturadars.lv</a></nav>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="sticky"><button class="btn" type="button" data-start>Pārbaudīt, kam es kvalificējos</button></div>
+
+<dialog id="tests" aria-labelledby="tTitle">
+  <div class="t-shell">
+    <div class="t-head">
+      <div class="t-prog"><span id="tStep">1 no 7</span><div class="t-bar"><i id="tBar" style="width:14%"></i></div></div>
+      <button class="icon-btn" type="button" id="tClose" aria-label="Aizvērt testu"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="t-body" id="tBody">
+      <div id="tQuestion"></div>
+      <div id="tResults" hidden>
+        <div id="tResList"></div>
+        <form class="lead-form" name="saraksts" method="POST" action="paldies.html" data-netlify="true" netlify-honeypot="bot-field" id="leadForm" novalidate>
+          <input type="hidden" name="form-name" value="saraksts">
+          <p class="hp"><label>Neaizpildīt: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <input type="hidden" name="atbildes" id="fAtbildes">
+          <input type="hidden" name="programmas" id="fProgrammas">
+          <h3>Kur nosūtīt tavu programmu sarakstu?</h3>
+          <p class="lead">Ievadi e-pastu, un mēs nosūtīsim tev piemērotās programmas. Pēc izvēles – arī brīdinājumus par jaunām programmām un termiņiem.</p>
+          <div class="fields">
+            <label class="f" for="fVards">Vārds <span class="opt-l">(nav obligāts)</span><input id="fVards" name="vards" autocomplete="given-name"></label>
+            <label class="f" for="fUzn">Uzņēmuma nosaukums <span class="opt-l">(nav obligāts)</span><input id="fUzn" name="uznemums" autocomplete="organization"></label>
+            <label class="f full" for="fEpasts">E-pasts<input id="fEpasts" name="epasts" type="email" autocomplete="email" required inputmode="email"></label>
+          </div>
+          <label class="consent" for="fPiekr"><input type="checkbox" id="fPiekr" name="piekrisana" value="ja" required><span>Piekrītu, ka Grantu Radars apstrādā manus datus, lai nosūtītu testa rezultātus, saskaņā ar <a href="privatuma-politika.html" target="_blank">privātuma politiku</a>.</span></label>
+          <label class="consent" for="fBrid"><input type="checkbox" id="fBrid" name="bridinajumi" value="ja"><span>Vēlos saņemt e-pasta brīdinājumus par jaunām man piemērotām programmām un termiņiem. Piekrišanu varu atsaukt jebkurā laikā.</span></label>
+          <div><button class="btn" type="submit" id="fSubmit">Saņemt manu sarakstu</button></div>
+          <p class="form-msg" id="fMsg" role="status"></p>
+          <p class="consult">Gribi, lai pārbaudām tavu situāciju personīgi? <a href="mailto:info@granturadars.lv?subject=Bezmaksas%20p%C4%81rbaude">Uzraksti mums</a> – bezmaksas pārbaude, atbildam darba dienas laikā. <a href="/cenas.html">Cenas</a></p>
+          <p style="font-size:13px;color:var(--muted)">Nekāda spama. Atrakstīties var ar vienu klikšķi jebkurā e-pastā.</p>
+        </form>
+        <p class="disclaimer">Tests ir pirmais filtrs, nevis juridisks atzinums. Dati par programmām atjaunoti <span class="dDate"></span>. Pirms pieteikšanās pārbaudi noteikumus oficiālajā avotā.</p>
+      </div>
+    </div>
+    <div class="t-foot">
+      <button class="btn-ghost" type="button" id="tBack"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H6m5-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Atpakaļ</button>
+      <button class="btn btn-sm" type="button" id="tNext" hidden>Tālāk</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="programmas.js"></script>
+<script>
+(function(){
+"use strict";
+var P = window.PROGRAMMAS || [], PS = window.PASVALDIBAS || [], DATE = window.DATI_ATJAUNOTI || "";
+var today = new Date().toISOString().slice(0,10);
+function live(p){ return !p.lidz || today <= p.lidz; }
+function one(n){ return n%10===1 && n%100!==11; }
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+function $(id){ return document.getElementById(id); }
+function each(sel,fn){ Array.prototype.forEach.call(document.querySelectorAll(sel),fn); }
+$("yr").textContent = new Date().getFullYear();
+each(".dDate",function(e){e.textContent=DATE;});
+
+var LIVE_P = P.filter(live), LIVE_M = PS.filter(live);
+var STAT = {open:"Atvērta",closing:"Drīz beidzas",soon:"Gaidāma",yearly:"Notiek reizi gadā"};
+var RANK = {closing:0,open:1,soon:2,yearly:3};
+
+/* ---------- header state ---------- */
+var top=$("top");
+function onScroll(){ top.classList.toggle("scrolled", window.scrollY>10); }
+window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+
+/* ---------- stats ---------- */
+var openN = LIVE_P.filter(function(p){return p.statuss==="open"||p.statuss==="closing";}).length + LIVE_M.filter(function(p){return p.statuss==="closing";}).length;
+var soonN = LIVE_P.filter(function(p){return p.statuss==="soon";}).length + LIVE_M.filter(function(p){return p.statuss==="soon";}).length;
+$("sAll").textContent = LIVE_P.length + LIVE_M.length;
+$("sOpen").textContent = openN;
+$("sSoon").textContent = soonN;
+
+/* ---------- ticker ---------- */
+(function(){
+  var items = LIVE_P.concat(LIVE_M).filter(function(p){ return p.statuss==="closing" || p.statuss==="soon"; })
+    .sort(function(a,b){ return (RANK[a.statuss]-RANK[b.statuss]) || String(a.lidz||"9").localeCompare(String(b.lidz||"9")); });
+  var html = items.map(function(p){ return '<span><b>'+esc(p.iest?p.iest+": ":"")+esc(p.nos)+'</b> · '+esc(p.termins)+'</span>'; }).join("");
+  $("ticker").innerHTML = html + html.replace(/<span>/g,'<span aria-hidden="true">');
+})();
+
+/* ---------- radar ---------- */
+(function(){
+  var cv=$("radar"); if(!cv||!cv.getContext) return;
+  var ctx=cv.getContext("2d"), RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var blips=[{a:-1.2,r:.66,t:"LIAA"},{a:-.3,r:.86,t:"ALTUM"},{a:.6,r:.52,t:"CFLA"},{a:1.5,r:.78,t:"LAD"},{a:2.4,r:.62,t:"Pašvaldības"},{a:3.2,r:.88,t:"Patentu valde"},{a:-2.2,r:.42,t:"Norvēģijas granti"},{a:-2.8,r:.8,t:"Capitalia"},{a:.15,r:.3,t:""},{a:2.0,r:.36,t:""},{a:-1.7,r:.92,t:""}];
+  var W=0,H=0,sweep=-Math.PI/2,last=0,visible=true;
+  function size(){ var b=cv.getBoundingClientRect(), d=Math.min(window.devicePixelRatio||1,2); W=b.width; H=b.height; cv.width=Math.round(W*d); cv.height=Math.round(H*d); ctx.setTransform(d,0,0,d,0,0); draw(); }
+  function draw(){
+    if(!W) return;
+    var cx=W/2, cy=H/2, R=Math.min(W,H)*0.44;
+    ctx.clearRect(0,0,W,H);
+    var bg=ctx.createRadialGradient(cx,cy,0,cx,cy,R); bg.addColorStop(0,"rgba(95,211,155,.10)"); bg.addColorStop(1,"rgba(95,211,155,0)");
+    ctx.fillStyle=bg; ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.fill();
+    for(var i=1;i<=5;i++){ ctx.beginPath(); ctx.arc(cx,cy,R*i/5,0,Math.PI*2); ctx.strokeStyle="rgba(95,211,155,"+(i===5?.4:.14)+")"; ctx.lineWidth=i===5?1.5:1; ctx.stroke(); }
+    for(var k=0;k<12;k++){ var a=k*Math.PI/6; ctx.beginPath(); ctx.moveTo(cx+Math.cos(a)*R*0.2,cy+Math.sin(a)*R*0.2); ctx.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R); ctx.strokeStyle="rgba(95,211,155,.07)"; ctx.lineWidth=1; ctx.stroke(); }
+    for(var t=0;t<72;t++){ var ta=t*Math.PI/36, l=t%6===0?10:5; ctx.beginPath(); ctx.moveTo(cx+Math.cos(ta)*R,cy+Math.sin(ta)*R); ctx.lineTo(cx+Math.cos(ta)*(R+l),cy+Math.sin(ta)*(R+l)); ctx.strokeStyle="rgba(95,211,155,.35)"; ctx.stroke(); }
+    var steps=48, span=1.4;
+    for(var s=0;s<steps;s++){ var a0=sweep-span*(s+1)/steps, a1=sweep-span*s/steps; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,a0,a1); ctx.closePath(); ctx.fillStyle="rgba(95,211,155,"+(0.26*Math.pow(1-s/steps,1.6))+")"; ctx.fill(); }
+    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(sweep)*R,cy+Math.sin(sweep)*R); ctx.strokeStyle="rgba(160,240,200,.95)"; ctx.lineWidth=2; ctx.stroke();
+    ctx.font="600 "+Math.max(11,Math.round(R*0.062))+"px Inter, system-ui, sans-serif"; ctx.textBaseline="middle";
+    blips.forEach(function(b){
+      var d=((sweep-b.a)%(Math.PI*2)+Math.PI*2)%(Math.PI*2), al=RM?0.9:Math.max(0.1,Math.exp(-d*0.8));
+      var x=cx+Math.cos(b.a)*R*b.r, y=cy+Math.sin(b.a)*R*b.r, gr=b.t?18:10;
+      var g=ctx.createRadialGradient(x,y,0,x,y,gr); g.addColorStop(0,"rgba(242,181,68,"+(al*0.75)+")"); g.addColorStop(1,"rgba(242,181,68,0)");
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,gr,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle="rgba(242,181,68,"+Math.max(al,0.3)+")"; ctx.beginPath(); ctx.arc(x,y,b.t?4.5:3,0,Math.PI*2); ctx.fill();
+      if(b.t&&al>0.18){ var right=Math.cos(b.a)>=-0.2; ctx.textAlign=right?"left":"right"; ctx.fillStyle="rgba(234,241,248,"+Math.min(1,al+0.15)+")"; ctx.fillText(b.t,x+(right?12:-12),y); }
+    });
+    ctx.beginPath(); ctx.arc(cx,cy,5,0,Math.PI*2); ctx.fillStyle="#5FD39B"; ctx.fill();
+  }
+  function tick(t){ requestAnimationFrame(tick); if(!visible||document.hidden){last=t;return;} var dt=Math.min((t-last)/1000,0.1); last=t; sweep+=dt*0.9; if(sweep>Math.PI*2)sweep-=Math.PI*2; draw(); }
+  window.addEventListener("resize",size);
+  if("IntersectionObserver" in window) new IntersectionObserver(function(e){visible=e[0].isIntersecting;}).observe(cv);
+  size();
+  if(RM){ sweep=-0.4; draw(); } else requestAnimationFrame(function(t){last=t;tick(t);});
+})();
+
+/* ---------- sticky CTA ---------- */
+(function(){
+  var st=$("sticky"), hb=$("heroBtn");
+  if(!("IntersectionObserver" in window)) return;
+  new IntersectionObserver(function(e){ st.classList.toggle("show", !e[0].isIntersecting); }).observe(hb);
+})();
+
+/* ---------- questions + matching ---------- */
+var Q = [
+  {k:"reg", t:"Kur reģistrēts tavs uzņēmums?", s:"Pierīga: Jūrmala, Mārupe, Ķekava, Ādaži, Salaspils, Ropaži, Olaine, Sigulda u.c.",
+   o:[["riga","Rīga"],["pieriga","Pierīga"],["vidzeme","Vidzeme"],["kurzeme","Kurzeme"],["zemgale","Zemgale"],["latgale","Latgale"]]},
+  {k:"vec", t:"Cik ilgi uzņēmums darbojas?",
+   o:[["pre","Vēl nav reģistrēts"],["lt1","Mazāk par gadu"],["1-5","1–5 gadi"],["5-7","5–7 gadi"],["gt7","Vairāk nekā 7 gadi"]]},
+  {k:"izm", t:"Cik cilvēku strādā uzņēmumā?",
+   o:[["mikro","Līdz 9"],["mazs","10–49"],["videjs","50–249"],["liels","250 un vairāk"]]},
+  {k:"noz", t:"Kurā nozarē strādājat?",
+   o:[["lauks","Lauksaimniecība vai pārtikas ražošana"],["razosana","Ražošana"],["it","IT un tehnoloģijas"],["pakalpojumi","Pakalpojumi"],["turisms","Tūrisms un viesmīlība"],["tirdznieciba","Tirdzniecība"],["cits","Cita nozare"]]},
+  {k:"plani", multi:true, t:"Ko plānojat nākamajos 12 mēnešos?", s:"Vari izvēlēties vairākus.",
+   o:[["iekartas","Iegādāties iekārtas vai tehniku"],["energo","Energoefektivitāte, saules paneļi"],["eksports","Eksports, izstādes ārzemēs"],["produkts","Jauns produkts vai pakalpojums"],["apmacibas","Darbinieku apmācības"],["ip","Preču zīme vai patents"],["darbinieki","Pieņemt jaunus darbiniekus"],["kapitals","Piesaistīt investorus vai kapitālu"],["digi","Digitalizācija vai kiberdrošība"],["nezinu","Vēl nav skaidrs"]]},
+  {k:"inv", t:"Cik lielu investīciju plānojat?",
+   o:[["lt25","Līdz 25 000 €"],["25-250","25 000–250 000 €"],["gt250","Vairāk nekā 250 000 €"]]},
+  {k:"zin", t:"Vai jums ir prototips vai sadarbība ar zinātniekiem?",
+   o:[["nav","Nav"],["prototips","Ir prototips vai produkta pirmā versija"],["zinatne","Sadarbojamies vai plānojam sadarboties ar zinātniekiem"]]}
+];
+var LABEL={}; Q.forEach(function(q){ q.o.forEach(function(o){ LABEL[q.k+":"+o[0]]=o[1]; }); });
+var VEC_LOW={"pre":0,"lt1":0,"1-5":1,"5-7":5,"gt7":7};
+
+function fits(p,a){
+  var f=p.f||{};
+  if(!live(p)) return false;
+  if(f.reg && f.reg.indexOf(a.reg)<0) return false;
+  if(f.nereg && f.nereg.indexOf(a.reg)>=0) return false;
+  if(f.izm && f.izm.indexOf(a.izm)<0) return false;
+  if(f.vecMax!=null && VEC_LOW[a.vec]>=f.vecMax) return false;
+  if(f.noz && f.noz.indexOf(a.noz)<0) return false;
+  if(f.zin && f.zin.indexOf(a.zin)<0) return false;
+  if(f.inv && f.inv.indexOf(a.inv)<0) return false;
+  if(f.plani && !f.plani.some(function(x){return a.plani.indexOf(x)>=0;})) return false;
+  return true;
+}
+function score(p,a){ var f=p.f||{}; return (f.plani||[]).filter(function(x){return a.plani.indexOf(x)>=0;}).length+(f.noz?2:0)+(f.zin?2:0); }
+function match(a){ return P.filter(function(p){return fits(p,a);}).sort(function(x,y){ return (RANK[x.statuss]-RANK[y.statuss])||(score(y,a)-score(x,a)); }); }
+function why(p,a){
+  var f=p.f||{}, parts=[];
+  var pl=(f.plani||[]).filter(function(x){return a.plani.indexOf(x)>=0;}).map(function(x){return LABEL["plani:"+x].toLowerCase();});
+  if(pl.length) parts.push("Atbilst tavam plānam: "+pl.join(", ")+".");
+  if(f.noz) parts.push("Paredzēta tavai nozarei.");
+  if(f.zin) parts.push(a.zin==="zinatne"?"Tev ir sadarbība ar zinātniekiem.":"Tev ir prototips.");
+  if(f.vecMax!=null) parts.push("Paredzēta uzņēmumiem līdz "+f.vecMax+" "+(f.vecMax===1?"gadam":"gadiem")+".");
+  return parts.join(" ");
+}
+function card(p,reason,note,tag){
+  tag=tag||"article";
+  return '<'+tag+' class="pcard"><div class="pcard-top"><span class="agency">'+esc(p.iest||"Pašvaldība")+'</span><span class="badge '+p.statuss+'">'+STAT[p.statuss]+'</span></div>'+
+    '<h3>'+esc(p.nos)+'</h3><p class="sum">'+esc(p.summa)+'</p><p class="when">'+esc(p.termins)+'</p>'+
+    (p.kam?'<p class="when">'+esc(p.kam)+'</p>':'')+(reason?'<p class="why">'+esc(reason)+'</p>':'')+(note?'<p class="note">'+esc(note)+'</p>':'')+
+    '<a href="'+esc(p.avots)+'" target="_blank" rel="noopener">Oficiālais avots ↗</a></'+tag+'>';
+}
+
+/* ---------- needs grid ---------- */
+var ICONS={
+  iekartas:'<path d="M10 28h20M13 28V17h14v11M17 17v-4h6v4" />',
+  energo:'<circle cx="20" cy="17" r="5"/><path d="M20 6v3M20 25v3M9 17h3M28 17h3M12.5 9.5l2 2M25.5 22.5l2 2M27.5 9.5l-2 2M14.5 22.5l-2 2M12 32h16"/>',
+  eksports:'<circle cx="20" cy="20" r="11"/><path d="M9 20h22M20 9c3 3 4.5 7 4.5 11S23 28 20 31c-3-3-4.5-7-4.5-11S17 12 20 9z"/>',
+  produkts:'<path d="M20 8l10 5v12l-10 5-10-5V13z"/><path d="M10 13l10 5 10-5M20 18v12"/>',
+  apmacibas:'<path d="M8 15l12-6 12 6-12 6z"/><path d="M13 18v6c0 2 3 4 7 4s7-2 7-4v-6"/>',
+  ip:'<circle cx="20" cy="18" r="8"/><path d="M17 15h3.5a2.5 2.5 0 0 1 0 5H17v-5zM17 20v3M15 30l5-4 5 4"/>',
+  darbinieki:'<circle cx="15" cy="15" r="4"/><circle cx="26" cy="16" r="3"/><path d="M8 29c0-4 3-7 7-7s7 3 7 7M22 29c0-3 2-5 4-5s4 2 4 5"/>',
+  kapitals:'<path d="M9 29h22M11 29V19M17 29V14M23 29V17M29 29V10"/>',
+  digi:'<rect x="9" y="10" width="22" height="15" rx="2"/><path d="M15 30h10M20 25v5M17 17l2 2 4-4"/>'
+};
+var NEEDS=[["iekartas","Iekārtas un tehnika","Ražošanai, lauksaimniecībai, pakalpojumiem"],["energo","Energoefektivitāte","Saules paneļi, siltināšana, AER"],["eksports","Eksports","Izstādes, misijas, jauni tirgi"],["produkts","Jauns produkts","Izstrāde, prototipi, inovācijas"],["apmacibas","Apmācības","Darbinieku prasmes un vadība"],["ip","Preču zīme, patents","Intelektuālā īpašuma aizsardzība"],["darbinieki","Jauni darbinieki","Augsti kvalificēti speciālisti"],["digi","Digitalizācija","IT risinājumi un kiberdrošība"]];
+$("needs").innerHTML=NEEDS.map(function(n){
+  var c=LIVE_P.filter(function(p){return p.f&&p.f.plani&&p.f.plani.indexOf(n[0])>=0;}).length;
+  return '<button type="button" class="need" data-need="'+n[0]+'" id="need-'+n[0]+'"><svg viewBox="0 0 40 40" fill="none" stroke="var(--go-bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="0.5" y="0.5" width="39" height="39" rx="11" fill="var(--quiet)" stroke="none"/>'+ICONS[n[0]]+'</svg><span><b>'+esc(n[1])+'</b><small>'+esc(n[2])+'</small></span><span class="cnt">'+c+' '+(one(c)?'programma':'programmas')+' →</span></button>';
+}).join("");
+
+/* ---------- programme map ---------- */
+(function(){
+  var ALL=LIVE_P.map(function(p){return p;}).concat(LIVE_M.map(function(p){ return {id:p.id,iest:"Pašvaldība",nos:p.nos,summa:p.summa,termins:p.termins,statuss:p.statuss,kam:p.piez||"",avots:p.avots,_m:true}; }));
+  ALL.sort(function(a,b){ return (RANK[a.statuss]-RANK[b.statuss]) || a.nos.localeCompare(b.nos,"lv"); });
+  var groups=[["all","Visas"],["LIAA","LIAA"],["ALTUM","ALTUM"],["CFLA","CFLA"],["LAD","LAD"],["Pašvaldība","Pašvaldības"],["other","Citas"],["open","Atvērtas tagad"]];
+  var cur="all", showAll=false, LIMIT=9, qEl=$("q");
+  function grp(p){ return ["LIAA","ALTUM","CFLA","LAD","Pašvaldība"].indexOf(p.iest)>=0 ? p.iest : (p.iest==="ALTUM un LIAA"?"ALTUM":"other"); }
+  function render(){
+    $("filters").innerHTML=groups.map(function(g){return '<button type="button" class="chip" id="chip-'+g[0]+'" data-g="'+g[0]+'" aria-pressed="'+(cur===g[0])+'">'+esc(g[1])+'</button>';}).join("");
+    var term=(qEl.value||"").trim().toLowerCase();
+    var list=ALL.filter(function(p){
+      if(cur==="open"){ if(!(p.statuss==="open"||p.statuss==="closing")) return false; }
+      else if(cur!=="all" && grp(p)!==cur) return false;
+      if(term){ var hay=(p.nos+" "+p.iest+" "+p.summa+" "+(p.kam||"")+" "+((p.f&&p.f.plani)||[]).map(function(x){return LABEL["plani:"+x]||"";}).join(" ")).toLowerCase(); if(hay.indexOf(term)<0) return false; }
+      return true;
+    });
+    var shown=showAll?list:list.slice(0,LIMIT);
+    $("map").innerHTML=shown.map(function(p){return card(p,"","");}).join("") || '<p class="empty" style="grid-column:1/-1">Nekas netika atrasts. Pamēģini citu vārdu vai filtru.</p>';
+    $("count").textContent="Rāda "+shown.length+" no "+list.length;
+    $("more").hidden = showAll || list.length<=LIMIT;
+  }
+  $("filters").addEventListener("click",function(e){ var b=e.target.closest("[data-g]"); if(!b) return; cur=b.getAttribute("data-g"); showAll=false; render(); });
+  qEl.addEventListener("input",function(){ showAll=false; render(); });
+  $("more").addEventListener("click",function(){ showAll=true; render(); });
+  render();
+})();
+
+/* ---------- examples ---------- */
+(function(){
+  var EX=[
+    {who:"Ražošana · Vidzeme",t:"Kokapstrādes darbnīca ar 6 darbiniekiem plāno jaunas iekārtas un eksportu",a:{reg:"vidzeme",vec:"gt7",izm:"mikro",noz:"razosana",plani:["iekartas","eksports"],inv:"25-250",zin:"nav"}},
+    {who:"IT · Rīga",t:"Divus gadus vecs IT uzņēmums ar prototipu meklē investorus un speciālistus",a:{reg:"riga",vec:"1-5",izm:"mikro",noz:"it",plani:["produkts","darbinieki","kapitals"],inv:"25-250",zin:"prototips"}},
+    {who:"Lauksaimniecība · Latgale",t:"Ģimenes saimniecība grib uzstādīt saules paneļus un nopirkt tehniku",a:{reg:"latgale",vec:"gt7",izm:"mikro",noz:"lauks",plani:["energo","iekartas"],inv:"25-250",zin:"nav"}}
+  ];
+  $("examples").innerHTML=EX.map(function(e){
+    var m=match(e.a), mu=LIVE_M.filter(function(p){return p.reg===e.a.reg;}).length;
+    return '<article class="ex"><span class="who">'+esc(e.who)+'</span><h3>'+esc(e.t)+'</h3><div class="big">'+m.length+'<small>'+(one(m.length)?'programma':'programmas')+(mu?' + '+mu+' pašvaldību':'')+'</small></div><ul>'+
+      m.slice(0,3).map(function(p){return '<li>'+esc(p.nos)+' <span>· '+esc(p.iest)+'</span></li>';}).join("")+'</ul></article>';
+  }).join("");
+})();
+
+/* ---------- test dialog ---------- */
+var dlg=$("tests"), body=$("tBody"), qEl=$("tQuestion"), rEl=$("tResults"), back=$("tBack"), next=$("tNext"), stepEl=$("tStep"), bar=$("tBar");
+var ans={plani:[]}, step=0, opener=null;
+function openTest(e, need){
+  opener=e&&e.currentTarget||null;
+  ans={plani: need?[need]:[]}; step=0; renderQ();
+  if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
+  document.documentElement.style.overflow="hidden";
+}
+function closeTest(){ if(dlg.close) dlg.close(); else dlg.removeAttribute("open"); }
+dlg.addEventListener("close",function(){ document.documentElement.style.overflow=""; if(opener&&opener.focus) opener.focus({preventScroll:true}); });
+each("[data-start]",function(b){ b.addEventListener("click",function(e){openTest(e);}); });
+$("needs").addEventListener("click",function(e){ var b=e.target.closest("[data-need]"); if(b) openTest({currentTarget:b}, b.getAttribute("data-need")); });
+$("tClose").addEventListener("click",closeTest);
+function setProgress(i){ var n=Q.length; stepEl.textContent=i<n?(i+1)+" no "+n:"Rezultāts"; bar.style.width=(i<n?((i+1)/n*100):100)+"%"; }
+function renderQ(){
+  var q=Q[step]; setProgress(step);
+  rEl.hidden=true; qEl.hidden=false; back.disabled=step===0;
+  var multi=!!q.multi;
+  var html='<div class="t-q"><h2 id="tTitle">'+esc(q.t)+'</h2>'+(q.s?'<p>'+esc(q.s)+'</p>':'')+'</div><div class="opts'+(multi?' multi':'')+'" role="'+(multi?'group':'radiogroup')+'" aria-labelledby="tTitle">';
+  q.o.forEach(function(o,i){
+    var on=multi?ans.plani.indexOf(o[0])>=0:ans[q.k]===o[0];
+    html+='<button type="button" class="opt" id="opt-'+q.k+'-'+i+'" data-v="'+o[0]+'" '+(multi?'aria-pressed':'role="radio" aria-checked')+'="'+on+'"><span class="mark"></span>'+esc(o[1])+'</button>';
+  });
+  qEl.innerHTML=html+'</div>';
+  next.hidden=!multi; next.disabled=multi&&ans.plani.length===0;
+  body.scrollTop=0;
+  var first=qEl.querySelector('.opt[aria-checked="true"],.opt[aria-pressed="true"]')||qEl.querySelector(".opt");
+  if(first) setTimeout(function(){ try{first.focus({preventScroll:true});}catch(_){first.focus();} },30);
+}
+qEl.addEventListener("click",function(e){
+  var b=e.target.closest(".opt"); if(!b) return;
+  var q=Q[step], v=b.getAttribute("data-v");
+  if(q.multi){
+    var i=ans.plani.indexOf(v);
+    if(v==="nezinu") ans.plani=i>=0?[]:["nezinu"];
+    else { ans.plani=ans.plani.filter(function(x){return x!=="nezinu";}); var j=ans.plani.indexOf(v); if(j>=0) ans.plani.splice(j,1); else ans.plani.push(v); }
+    Array.prototype.forEach.call(qEl.querySelectorAll(".opt"),function(o){ o.setAttribute("aria-pressed",ans.plani.indexOf(o.getAttribute("data-v"))>=0); });
+    next.disabled=ans.plani.length===0;
+  } else {
+    ans[q.k]=v;
+    Array.prototype.forEach.call(qEl.querySelectorAll(".opt"),function(o){ o.setAttribute("aria-checked",o===b); });
+    setTimeout(advance,180);
+  }
+});
+next.addEventListener("click",advance);
+back.addEventListener("click",function(){ if(!rEl.hidden){ step=Q.length-1; renderQ(); return; } if(step>0){ step--; renderQ(); } });
+function advance(){ if(step<Q.length-1){ step++; renderQ(); } else showResults(); }
+function showResults(){
+  setProgress(Q.length); qEl.hidden=true; rEl.hidden=false; next.hidden=true;
+  var a=ans, list=match(a);
+  var now=list.filter(function(p){return p.statuss!=="soon";}), later=list.filter(function(p){return p.statuss==="soon";});
+  var muni=LIVE_M.filter(function(p){return p.reg===a.reg;}).sort(function(x,y){return RANK[x.statuss]-RANK[y.statuss];});
+  var h='<div class="res-head"><span class="eyebrow">Tavs rezultāts</span><h2>'+(list.length?'Atradām '+list.length+' '+(one(list.length)?'programmu, kas tev varētu derēt':'programmas, kas tev varētu derēt'):'Šobrīd tiešu atbilstību neatradām')+'</h2><p>Saraksts balstīts uz tavām atbildēm. Tas ir pirmais filtrs: precīzus noteikumus vienmēr pārbaudi oficiālajā avotā.</p></div>';
+  if(now.length) h+='<div class="res-list">'+now.map(function(p){ var rp=(p.f&&p.f.regPiez&&p.f.regPiez[a.reg])||""; return card(p,why(p,a),rp); }).join("")+'</div>';
+  if(later.length) h+='<div class="res-sub"><h3>Drīzumā atvērsies</h3><p>Sagatavojies laikus: šīs programmas vēl nav atvērtas vai gaida jaunu kārtu.</p></div><div class="res-list">'+later.map(function(p){return card(p,why(p,a),"");}).join("")+'</div>';
+  if(!list.length) h+='<div class="empty">Pēc tavām atbildēm šobrīd nav atvērtas programmas ar tiešu atbilstību. Jaunas kārtas atveras regulāri. Atstāj e-pastu, un mēs paziņosim, kad parādīsies kas tev piemērots.</div>';
+  if(muni.length) h+='<div class="res-sub"><h3>Pašvaldību konkursi: '+esc(LABEL["reg:"+a.reg])+'</h3><p>Der, ja uzņēmums ir reģistrēts attiecīgajā novadā vai pilsētā. Lielākā daļa notiek reizi gadā.</p></div><div class="res-list">'+muni.map(function(p){return card(p,"",p.piez||"");}).join("")+'</div>';
+  $("tResList").innerHTML=h;
+  $("fAtbildes").value=Q.map(function(q){ return q.t+" "+(q.multi?a.plani.map(function(v){return LABEL["plani:"+v];}).join(", "):LABEL[q.k+":"+a[q.k]]); }).join("\n");
+  $("fProgrammas").value=list.concat(muni).map(function(p){return (p.iest?p.iest+": ":"")+p.nos+" ("+p.summa+"; "+p.termins+") "+p.avots;}).join("\n");
+  body.scrollTop=0;
+  var t=rEl.querySelector("h2"); if(t){ t.setAttribute("tabindex","-1"); t.focus({preventScroll:true}); }
+}
+
+/* ---------- form ---------- */
+var form=$("leadForm"), msg=$("fMsg");
+form.addEventListener("submit",function(e){
+  e.preventDefault(); msg.className="form-msg"; msg.textContent="";
+  var em=$("fEpasts"), pk=$("fPiekr");
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())){ msg.className="form-msg err"; msg.textContent="Ievadi derīgu e-pasta adresi, piemēram, vards@uznemums.lv."; em.focus(); return; }
+  if(!pk.checked){ msg.className="form-msg err"; msg.textContent="Lai nosūtītu sarakstu, atzīmē piekrišanu datu apstrādei."; pk.focus(); return; }
+  var btn=$("fSubmit"); btn.disabled=true; btn.textContent="Sūta…";
+  fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(form)).toString()})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); form.innerHTML='<div class="form-ok"><b>Paldies!</b> Tavs programmu saraksts ir saņemts. Mēs to nosūtīsim uz '+esc(em.value.trim())+' vienas darba dienas laikā.</div>'; })
+    .catch(function(){ btn.disabled=false; btn.textContent="Saņemt manu sarakstu"; msg.className="form-msg err"; msg.textContent="Neizdevās nosūtīt. Pārbaudi interneta savienojumu un mēģini vēlreiz."; });
+});
+})();
+</script>
+</body>
+</html>
