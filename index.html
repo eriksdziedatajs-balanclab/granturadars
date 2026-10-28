@@ -390,7 +390,7 @@ label.f span.opt-l{font-weight:400;color:var(--muted)}
         </button>
         <a class="btn-line" href="#karte">Skatīt programmu karti</a>
       </div>
-      <div class="meta"><span>Bezmaksas tests</span><span>7 jautājumi</span><span>Aptuveni 2 minūtes</span><span>Bez reģistrācijas</span></div>
+      <div class="meta"><span>Bezmaksas tests</span><span>8 jautājumi</span><span>Aptuveni 2 minūtes</span><span>Bez reģistrācijas</span></div>
     </div>
     <div class="stage" role="img" aria-label="Radars atrod atbalsta programmas: LIAA, ALTUM, CFLA, LAD un pašvaldības">
       <canvas id="radar"></canvas>
@@ -453,7 +453,7 @@ label.f span.opt-l{font-weight:400;color:var(--muted)}
       <div class="how">
         <div class="how-step">
           <div class="mock" aria-hidden="true"><span class="mq">Ko plānojat nākamajos 12 mēnešos?</span><div class="mbar"><i></i></div><span class="mo on">Iegādāties iekārtas vai tehniku</span><span class="mo on">Eksports, izstādes ārzemēs</span><span class="mo">Jauns produkts vai pakalpojums</span><span class="mo">Darbinieku apmācības</span></div>
-          <span class="k">1. SOLIS</span><h3>Atbildi uz 7 jautājumiem</h3><p>Reģions, uzņēmuma vecums, darbinieku skaits, nozare, plāni nākamajiem 12 mēnešiem, investīcijas apjoms un vai plāno prototipu vai sadarbību ar zinātniekiem.</p>
+          <span class="k">1. SOLIS</span><h3>Atbildi uz 8 jautājumiem</h3><p>Reģions, uzņēmuma vecums, darbinieku skaits, nozare, plāni nākamajiem 12 mēnešiem, investīcijas apjoms, prototips vai sadarbība ar zinātniekiem un nodokļu parāds. Pierobežas novadiem ir viens papildu jautājums.</p>
         </div>
         <div class="how-step">
           <div class="mock" aria-hidden="true"><div class="mr"><small>LIAA <span>Atvērta</span></small><b>MVU eksporta atbalsta plāns</b><span>60%, līdz 40 000 € gadā</span></div><div class="mr"><small>ALTUM <span>Atvērta</span></small><b>Investīciju aizdevumi</b><span>Līdz 5 milj. €</span></div><div class="mr"><small>Capitalia <span>Atvērta</span></small><b>Mikroaizdevumi</b><span>Līdz 50 000 €</span></div></div>
@@ -605,7 +605,7 @@ label.f span.opt-l{font-weight:400;color:var(--muted)}
     <div class="wrap">
       <span class="eyebrow" style="color:var(--signal)">2 minūtes</span>
       <h2 id="h-final">Uzzini, kas pienākas tavam uzņēmumam</h2>
-      <p>7 jautājumi, bez reģistrācijas. Rezultātu redzēsi uzreiz.</p>
+      <p>8 jautājumi, bez reģistrācijas. Rezultātu redzēsi uzreiz.</p>
       <button class="btn" type="button" data-start>Pārbaudīt, kam es kvalificējos</button>
       <p style="margin-top:14px"><a href="/pieteikties.html" style="color:var(--signal);font-weight:600">Vai uzreiz aizpildi pieteikumu bezmaksas pārbaudei →</a></p>
     </div>
@@ -745,6 +745,9 @@ $("sSoon").textContent = soonN;
 var Q = [
   {k:"reg", t:"Kur reģistrēts tavs uzņēmums?", s:"Pierīga: Jūrmala, Mārupe, Ķekava, Ādaži, Salaspils, Ropaži, Olaine, Sigulda u.c.",
    o:[["riga","Rīga"],["pieriga","Pierīga"],["vidzeme","Vidzeme"],["kurzeme","Kurzeme"],["zemgale","Zemgale"],["latgale","Latgale"]]},
+  {k:"pier", t:"Vai uzņēmums atrodas pierobežas novadā?", s:"Alūksnes, Balvu, Ludzas, Krāslavas vai Augšdaugavas novads. Tiem ir atsevišķs atbalsts.",
+   when:function(a){return a.reg==="latgale"||a.reg==="vidzeme";}, def:"ne",
+   o:[["ja","Jā"],["ne","Nē"]]},
   {k:"vec", t:"Cik ilgi uzņēmums darbojas?",
    o:[["pre","Vēl nav reģistrēts"],["lt1","Mazāk par gadu"],["1-5","1–5 gadi"],["5-7","5–7 gadi"],["gt7","Vairāk nekā 7 gadi"]]},
   {k:"izm", t:"Cik cilvēku strādā uzņēmumā?",
@@ -756,8 +759,12 @@ var Q = [
   {k:"inv", t:"Cik lielu investīciju plānojat?",
    o:[["lt25","Līdz 25 000 €"],["25-250","25 000–250 000 €"],["gt250","Vairāk nekā 250 000 €"]]},
   {k:"zin", t:"Vai jums ir prototips vai sadarbība ar zinātniekiem?",
-   o:[["nav","Nav"],["prototips","Ir prototips vai produkta pirmā versija"],["zinatne","Sadarbojamies vai plānojam sadarboties ar zinātniekiem"]]}
+   o:[["nav","Nav"],["prototips","Ir prototips vai produkta pirmā versija"],["zinatne","Sadarbojamies vai plānojam sadarboties ar zinātniekiem"]]},
+  {k:"vid", t:"Vai uzņēmumam ir nodokļu parāds VID?", s:"Lielākajā daļā programmu parāds nedrīkst pārsniegt 1 000 €.",
+   o:[["nav","Nav"],["lt1000","Ir, līdz 1 000 €"],["gt1000","Ir, virs 1 000 €"]]}
 ];
+function shown(i,a){ var q=Q[i]; return !q.when||q.when(a); }
+function visIdx(a){ var r=[]; for(var i=0;i<Q.length;i++) if(shown(i,a)) r.push(i); return r; }
 var LABEL={}; Q.forEach(function(q){ q.o.forEach(function(o){ LABEL[q.k+":"+o[0]]=o[1]; }); });
 var VEC_LOW={"pre":0,"lt1":0,"1-5":1,"5-7":5,"gt7":7};
 
@@ -765,6 +772,7 @@ function fits(p,a){
   var f=p.f||{};
   if(!live(p)) return false;
   if(f.reg && f.reg.indexOf(a.reg)<0) return false;
+  if(f.pier && a.pier!=="ja") return false;
   if(f.nereg && f.nereg.indexOf(a.reg)>=0) return false;
   if(f.izm && f.izm.indexOf(a.izm)<0) return false;
   if(f.vecMax!=null && VEC_LOW[a.vec]>=f.vecMax) return false;
@@ -866,10 +874,10 @@ dlg.addEventListener("close",function(){ document.documentElement.style.overflow
 each("[data-start]",function(b){ b.addEventListener("click",function(e){openTest(e);}); });
 $("needs").addEventListener("click",function(e){ var b=e.target.closest("[data-need]"); if(b) openTest({currentTarget:b}, b.getAttribute("data-need")); });
 $("tClose").addEventListener("click",closeTest);
-function setProgress(i){ var n=Q.length; stepEl.textContent=i<n?(i+1)+" no "+n:"Rezultāts"; bar.style.width=(i<n?((i+1)/n*100):100)+"%"; }
+function setProgress(i){ var v=visIdx(ans), n=v.length, k=v.indexOf(i); if(i>=Q.length||k<0){ stepEl.textContent="Rezultāts"; bar.style.width="100%"; return; } stepEl.textContent=(k+1)+" no "+n; bar.style.width=((k+1)/n*100)+"%"; }
 function renderQ(){
   var q=Q[step]; setProgress(step);
-  rEl.hidden=true; qEl.hidden=false; back.disabled=step===0;
+  rEl.hidden=true; qEl.hidden=false; back.disabled=step===visIdx(ans)[0];
   var multi=!!q.multi;
   var html='<div class="t-q"><h2 id="tTitle">'+esc(q.t)+'</h2>'+(q.s?'<p>'+esc(q.s)+'</p>':'')+'</div><div class="opts'+(multi?' multi':'')+'" role="'+(multi?'group':'radiogroup')+'" aria-labelledby="tTitle">';
   q.o.forEach(function(o,i){
@@ -898,20 +906,21 @@ qEl.addEventListener("click",function(e){
   }
 });
 next.addEventListener("click",advance);
-back.addEventListener("click",function(){ if(!rEl.hidden){ step=Q.length-1; renderQ(); return; } if(step>0){ step--; renderQ(); } });
-function advance(){ if(step<Q.length-1){ step++; renderQ(); } else showResults(); }
+back.addEventListener("click",function(){ var v=visIdx(ans); if(!rEl.hidden){ step=v[v.length-1]; renderQ(); return; } var k=v.indexOf(step); if(k>0){ step=v[k-1]; renderQ(); } });
+function advance(){ Q.forEach(function(q,i){ if(q.def&&!shown(i,ans)) ans[q.k]=q.def; }); var v=visIdx(ans), k=v.indexOf(step); if(k<v.length-1){ step=v[k+1]; renderQ(); } else showResults(); }
 function showResults(){
   setProgress(Q.length); qEl.hidden=true; rEl.hidden=false; next.hidden=true;
   var a=ans, list=match(a);
   var now=list.filter(function(p){return p.statuss!=="soon";}), later=list.filter(function(p){return p.statuss==="soon";});
   var muni=LIVE_M.filter(function(p){return p.reg===a.reg;}).sort(function(x,y){return RANK[x.statuss]-RANK[y.statuss];});
   var h='<div class="res-head"><span class="eyebrow">Tavs rezultāts</span><h2>'+(list.length?'Atradām '+list.length+' '+(one(list.length)?'programmu, kas tev varētu derēt':'programmas, kas tev varētu derēt'):'Šobrīd tiešu atbilstību neatradām')+'</h2><p>Saraksts balstīts uz tavām atbildēm. Tas ir pirmais filtrs: precīzus noteikumus vienmēr pārbaudi oficiālajā avotā.</p></div>';
+  if(a.vid==="gt1000") h+='<div class="empty" style="border-color:var(--amber);background:var(--amber-soft)"><b>Svarīgi:</b> ar nodokļu parādu virs 1 000 € lielākā daļa programmu atbalstu nepiešķir. Pirms pieteikšanās parādu vajag nomaksāt vai noslēgt ar VID vienošanos par samaksas termiņa pagarinājumu. Pārbaudīsim konkrētās programmas noteikumus bezmaksas pārbaudē.</div>';
   if(now.length) h+='<div class="res-list">'+now.map(function(p){ var rp=(p.f&&p.f.regPiez&&p.f.regPiez[a.reg])||""; return card(p,why(p,a),rp); }).join("")+'</div>';
   if(later.length) h+='<div class="res-sub"><h3>Drīzumā atvērsies</h3><p>Sagatavojies laikus: šīs programmas vēl nav atvērtas vai gaida jaunu kārtu.</p></div><div class="res-list">'+later.map(function(p){return card(p,why(p,a),"");}).join("")+'</div>';
   if(!list.length) h+='<div class="empty">Pēc tavām atbildēm šobrīd nav atvērtas programmas ar tiešu atbilstību. Jaunas kārtas atveras regulāri. Atstāj e-pastu, un mēs paziņosim, kad parādīsies kas tev piemērots.</div>';
   if(muni.length) h+='<div class="res-sub"><h3>Pašvaldību konkursi: '+esc(LABEL["reg:"+a.reg])+'</h3><p>Der, ja uzņēmums ir reģistrēts attiecīgajā novadā vai pilsētā. Lielākā daļa notiek reizi gadā.</p></div><div class="res-list">'+muni.map(function(p){return card(p,"",p.piez||"");}).join("")+'</div>';
   $("tResList").innerHTML=h;
-  $("fAtbildes").value=Q.map(function(q){ return q.t+" "+(q.multi?a.plani.map(function(v){return LABEL["plani:"+v];}).join(", "):LABEL[q.k+":"+a[q.k]]); }).join("\n");
+  $("fAtbildes").value=Q.filter(function(q,i){return shown(i,a);}).map(function(q){ return q.t+" "+(q.multi?a.plani.map(function(v){return LABEL["plani:"+v];}).join(", "):LABEL[q.k+":"+a[q.k]]); }).join("\n");
   $("fProgrammas").value=list.concat(muni).map(function(p){return (p.iest?p.iest+": ":"")+p.nos+" ("+p.summa+"; "+p.termins+") "+p.avots;}).join("\n");
   body.scrollTop=0;
   var t=rEl.querySelector("h2"); if(t){ t.setAttribute("tabindex","-1"); t.focus({preventScroll:true}); }

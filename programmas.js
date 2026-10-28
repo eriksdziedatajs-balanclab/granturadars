@@ -14,11 +14,18 @@
        plani: vajadzīgs vismaz viens no plāniem
        zin: vajadzīgs vismaz viens: prototips, zinatne
        inv: investīcijas apjoms (lt25, 25-250, gt250)
+       pier: ["ja"] – tikai pierobežas novadiem (Alūksne, Balvi, Ludza, Krāslava, Augšdaugava)
        regPiez: piezīme konkrētam reģionam
 */
 window.DATI_ATJAUNOTI = "28.10.2026";
 
 window.PROGRAMMAS = [
+  { id:"p81", iest:"ALTUM", nos:"Bezprocentu aizdevums uzņēmumiem pierobežā", statuss:"open", lidz:"2027-06-30",
+    summa:"0% procentu aizdevums (de minimis atbalsts); summa un termiņš jāprecizē ALTUM",
+    termins:"Pieteikties līdz 30.06.2027 (jāprecizē ALTUM)",
+    kam:"Uzņēmumi, arī lauksaimnieki, Alūksnes, Balvu, Ludzas, Krāslavas un Augšdaugavas novadā. Procentu atlaide samazina uzņēmuma de minimis limitu.",
+    avots:"https://www.lsm.lv/raksts/zinas/ekonomika/21.07.2026-dala-lauksaimnieku-pierobeza-kritize-altum-bezprocentu-aizdevumu-var-ierobezot-citas-atbalsta-iespejas.a655324/",
+    f:{ reg:["latgale","vidzeme"], pier:["ja"] } },
   { id:"p02", iest:"LIAA", nos:"Inovāciju vaučeri", statuss:"open",
     summa:"45–100% izmaksu, līdz 25 000 € vienam produktam",
     termins:"Kamēr ir finansējums (projekti līdz 29.02.2028)",
