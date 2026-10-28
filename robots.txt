@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /paldies.html
+Disallow: /paldies-pieteikums.html
 
 Sitemap: https://granturadars.lv/sitemap.xml
