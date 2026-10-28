@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pieteikties bezmaksas pārbaudei – Grantu Radars</title>
+<meta name="description" content="Aizpildi pieteikumu, un 1 darba dienas laikā saņemsi bezmaksas pārbaudi: kurām programmām atbilsti, cik vari saņemt un ko maksā pats.">
+<link rel="canonical" href="https://granturadars.lv/pieteikties.html">
+<meta property="og:title" content="Pieteikties bezmaksas pārbaudei – Grantu Radars">
+<meta property="og:description" content="Aizpildi pieteikumu, un 1 darba dienas laikā saņemsi bezmaksas pārbaudi: kurām programmām atbilsti, cik vari saņemt un ko maksā pats.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://granturadars.lv/pieteikties.html">
+<meta property="og:image" content="https://granturadars.lv/og-image.png">
+<meta property="og:locale" content="lv_LV">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1F38">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/sub.css">
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="/" aria-label="Grantu Radars, sākums"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#14304F"/><circle cx="32" cy="32" r="20" fill="none" stroke="#5FD39B" stroke-opacity=".35" stroke-width="3"/><circle cx="32" cy="32" r="11" fill="none" stroke="#5FD39B" stroke-opacity=".35" stroke-width="3"/><path d="M32 32 L32 12 A20 20 0 0 1 50.3 24 Z" fill="#5FD39B" fill-opacity=".55"/><circle cx="43" cy="22" r="4" fill="#F2B544"/></svg>Grantu Radars</a><nav aria-label="Galvenā"><a href="/">Uzņēmumiem</a><a href="/privatpersonam.html">Privātpersonām</a><a href="/programmas/">Programmu ceļveži</a><a href="/finansesana.html">Finansēšana</a><a href="/cenas.html">Cenas</a><a href="/#par-mums">Par mums</a><a class="nav-cta" href="/pieteikties.html" aria-current="page">Pieteikties</a></nav></div></header>
+<section class="hero"><div class="wrap narrow"><span class="eyebrow">Pieteikums</span><h1>Pieteikties bezmaksas pārbaudei</h1><p class="lead">Aizpildi formu 5 minūtēs. Darba dienas laikā atbildēsim, kurām programmām atbilsti, cik vari saņemt un ko maksāsi pats. Pārbaude ir bez maksas un bez saistībām.</p></div></section>
+<main><div class="wrap narrow">
+
+<form class="form" name="pieteikums" method="POST" action="/paldies.html" data-netlify="true" netlify-honeypot="bot-field" id="pf" novalidate>
+<input type="hidden" name="form-name" value="pieteikums">
+<p hidden><label>Neaizpildīt: <input name="bot-field"></label></p>
+
+<fieldset><legend>Kas piesakās?</legend>
+<div class="who-pick" role="radiogroup">
+<label><input type="radio" name="tips" value="uznemums" checked> Uzņēmums</label>
+<label><input type="radio" name="tips" value="privatpersona"> Privātpersona / mājsaimniecība</label>
+</div></fieldset>
+
+<fieldset data-for="uznemums"><legend>Par uzņēmumu</legend>
+<div class="row2">
+<label>Uzņēmuma nosaukums<input name="u_nosaukums" required autocomplete="organization"></label>
+<label>Reģistrācijas numurs <small>(nav obligāts)</small><input name="u_regnr" inputmode="numeric"></label>
+<label>Nozare<select name="u_nozare" required><option value="">Izvēlies</option><option>Lauksaimniecība, pārtika</option><option>Ražošana</option><option>IT</option><option>Pakalpojumi</option><option>Tūrisms</option><option>Tirdzniecība</option><option>Būvniecība</option><option>Cits</option></select></label>
+<label>Darbinieku skaits<select name="u_darbinieki" required><option value="">Izvēlies</option><option>Līdz 9</option><option>10–49</option><option>50–249</option><option>250+</option></select></label>
+<label>Apgrozījums pēdējā gadā<select name="u_apgrozijums"><option value="">Izvēlies</option><option>Vēl nav</option><option>Līdz 50 000 €</option><option>50 000–350 000 €</option><option>350 000–2 milj. €</option><option>Virs 2 milj. €</option></select></label>
+<label>Reģions<select name="u_regions" required><option value="">Izvēlies</option><option>Rīga</option><option>Pierīga</option><option>Vidzeme</option><option>Kurzeme</option><option>Zemgale</option><option>Latgale</option></select></label>
+</div></fieldset>
+
+<fieldset data-for="uznemums"><legend>Projekts</legend>
+<label>Ko plānojat izdarīt?<textarea name="u_projekts" required placeholder="Piemēram: iegādāties jaunu ražošanas iekārtu, lai palielinātu jaudu un sāktu eksportu uz Zviedriju."></textarea></label>
+<div class="row2">
+<label>Aptuvenā summa<select name="u_summa"><option value="">Izvēlies</option><option>Līdz 25 000 €</option><option>25 000–100 000 €</option><option>100 000–250 000 €</option><option>Virs 250 000 €</option></select></label>
+<label>Kad gribat sākt?<select name="u_kad"><option value="">Izvēlies</option><option>Pēc iespējas ātrāk</option><option>3 mēnešu laikā</option><option>Šogad vai nākamgad</option><option>Vēl nezinu</option></select></label>
+</div>
+<label>Programma, ja jau zināt <small>(nav obligāts)</small><input name="u_programma" placeholder="Piemēram: LIAA eksporta atbalsts"></label>
+<div class="row2">
+<label>Pašu līdzekļi projektam<select name="u_pasu"><option value="">Izvēlies</option><option>Ir visa summa</option><option>Ir daļa</option><option>Nav</option></select></label>
+<label>Vai vajadzēs bankas kredītu?<select name="u_kredits"><option value="">Izvēlies</option><option>Jā</option><option>Nē</option><option>Nezinu</option></select></label>
+</div></fieldset>
+
+<fieldset data-for="privatpersona" disabled><legend>Par īpašumu</legend>
+<div class="row2">
+<label>Pagasts vai pilsēta<input name="p_vieta" required placeholder="Piemēram: Garkalne"></label>
+<label>Mājokļa veids<select name="p_veids" required><option value="">Izvēlies</option><option>Privātmāja</option><option>Dvīņu vai rindu māja</option><option>Dzīvoklis daudzdzīvokļu mājā</option></select></label>
+<label>Apkurināmā platība, m²<input name="p_platiba" inputmode="numeric"></label>
+<label>Būvēta (gads)<input name="p_gads" inputmode="numeric"></label>
+<label>Vai esat īpašnieks?<select name="p_ipasnieks" required><option value="">Izvēlies</option><option>Jā, vienīgais</option><option>Jā, ar kopīpašniekiem</option><option>Nē</option></select></label>
+<label>Deklarēts šajā adresē?<select name="p_deklarets"><option value="">Izvēlies</option><option>Jā</option><option>Nē</option><option>Plānoju</option></select></label>
+</div></fieldset>
+
+<fieldset data-for="privatpersona" disabled><legend>Apkure un plāni</legend>
+<div class="row2">
+<label>Pašreizējā apkure<select name="p_apkure" required><option value="">Izvēlies</option><option>Gāzes katls</option><option>Malkas vai granulu katls</option><option>Elektriskā apkure</option><option>Siltumsūknis</option><option>Centralizētā siltumapgāde</option><option>Cits</option></select></label>
+<label>Elektrības patēriņš gadā, kWh <small>(aptuveni)</small><input name="p_kwh" inputmode="numeric"></label>
+</div>
+<div><span style="font-weight:600;font-size:15px">Ko gribat ierīkot?</span>
+<div class="checks" style="margin-top:8px">
+<label><input type="checkbox" name="p_plani" value="Saules paneļi"> Saules paneļi</label>
+<label><input type="checkbox" name="p_plani" value="Akumulators"> Akumulators</label>
+<label><input type="checkbox" name="p_plani" value="Siltumsūknis"> Siltumsūknis</label>
+<label><input type="checkbox" name="p_plani" value="Siltināšana"> Siltināšana</label>
+<label><input type="checkbox" name="p_plani" value="Kanalizācija"> Kanalizācija</label>
+<label><input type="checkbox" name="p_plani" value="Cits"> Cits</label>
+</div></div>
+<label>Papildu informācija <small>(nav obligāts)</small><textarea name="p_piezimes" placeholder="Piemēram: radiatori jau ir, gribam arī karsto ūdeni."></textarea></label>
+</fieldset>
+
+<fieldset><legend>Kontakti</legend>
+<div class="row2">
+<label>Vārds, uzvārds<input name="vards" required autocomplete="name"></label>
+<label>Tālrunis<input name="talrunis" type="tel" required autocomplete="tel" inputmode="tel"></label>
+<label>E-pasts<input name="epasts" type="email" required autocomplete="email" inputmode="email"></label>
+</div>
+<label class="consent"><input type="checkbox" name="piekrisana" value="ja" required><span>Piekrītu, ka Grantu Radars apstrādā šos datus, lai sagatavotu bezmaksas pārbaudi un sazinātos ar mani, saskaņā ar <a href="/privatuma-politika.html" target="_blank">privātuma politiku</a>.</span></label>
+</fieldset>
+
+<div class="note" style="margin:0">Personas kodu, kontu numurus un dokumentu kopijas šeit nesniedziet. Tos lūgsim tikai pēc līguma noslēgšanas.</div>
+<p class="form-msg" id="pmsg" role="status"></p>
+<div><button class="btn" type="submit">Nosūtīt pieteikumu</button></div>
+</form>
+<script>
+(function(){
+var f=document.getElementById('pf'),m=document.getElementById('pmsg');
+function sync(){var t=f.querySelector('input[name=tips]:checked').value;
+ f.querySelectorAll('fieldset[data-for]').forEach(function(fs){fs.disabled=fs.getAttribute('data-for')!==t;});}
+f.querySelectorAll('input[name=tips]').forEach(function(r){r.addEventListener('change',sync);});
+try{var q=new URLSearchParams(location.search).get('tips');if(q==='privatpersona'){f.querySelector('input[value=privatpersona]').checked=true;}}catch(e){}
+sync();
+f.addEventListener('submit',function(e){
+ m.textContent='';
+ var bad=Array.prototype.find.call(f.querySelectorAll('[required]'),function(el){return !el.disabled&&!el.closest('fieldset[disabled]')&&!el.checkValidity();});
+ if(bad){e.preventDefault();m.textContent=bad.type==='checkbox'?'Lūdzu, atzīmējiet piekrišanu datu apstrādei.':bad.type==='email'?'Ievadiet derīgu e-pasta adresi.':'Lūdzu, aizpildiet visus obligātos laukus.';bad.focus();}
+});
+})();
+</script>
+</div></main>
+<footer><div class="wrap"><div>© 2026 Grantu Radars · SIA "Home Project"</div><nav aria-label="Kājene"><a href="/cenas.html">Cenas</a><a href="/programmas/">Programmu ceļveži</a><a href="/noteikumi.html">Lietošanas noteikumi</a><a href="/privatuma-politika.html">Privātuma politika</a><a href="mailto:info@granturadars.lv">info@granturadars.lv</a></nav></div></footer>
+</body>
+</html>

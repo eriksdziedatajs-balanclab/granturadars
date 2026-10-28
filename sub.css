@@ -69,3 +69,25 @@ footer a:hover{color:var(--ink)}
 .bank .bh{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
 .bank ul{margin:0;font-size:15.5px}
 .bank a{font-size:14.5px;color:var(--go-bg);font-weight:600}
+.top nav a.nav-cta{background:var(--go-bg);color:var(--go-fg);padding:8px 14px;border-radius:10px}
+.top nav a.nav-cta:hover{background:var(--go-hover);color:var(--go-fg)}
+.form{display:grid;gap:22px}
+.form fieldset{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:20px;margin:0;display:grid;gap:14px;min-width:0}
+.form fieldset[disabled]{display:none}
+.form legend{font:800 18px/1.2 var(--display);padding:0 6px}
+.form .row2{align-items:end;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}
+.form label{display:grid;gap:6px;font-size:15px;font-weight:600}
+.form label small{font-weight:400;color:var(--muted)}
+.form input:not([type=radio]):not([type=checkbox]),.form select,.form textarea{font:16px/1.4 var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px;width:100%;min-width:0}
+.form textarea{min-height:110px;resize:vertical}
+.form :is(input,select,textarea):focus-visible{outline:3px solid var(--signal);outline-offset:1px}
+.who-pick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.who-pick label{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;background:var(--surface);font-size:16px}
+.who-pick label:has(input:checked){border-color:var(--go-bg);box-shadow:inset 0 0 0 1px var(--go-bg)}
+.who-pick input{accent-color:var(--go-bg);width:18px;height:18px}
+.checks{display:flex;flex-wrap:wrap;gap:8px 18px}
+.checks label{display:flex;align-items:center;gap:8px;font-weight:400}
+.checks input,.consent input{accent-color:var(--go-bg);width:18px;height:18px;flex:none}
+.consent{display:flex!important;gap:10px;align-items:flex-start;font-weight:400!important;font-size:15px!important}
+.form-msg{color:#C2410C;font-size:15px;min-height:1.2em;margin:0}
+@media (max-width:480px){.who-pick{grid-template-columns:1fr}}
