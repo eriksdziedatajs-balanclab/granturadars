@@ -25,12 +25,12 @@ function clientMail(d) {
   const steps = company
     ? [
         "2 darba dienu laikā nosūtīsim izvērtējumu: kurām programmām projekts atbilst, cik lielu atbalstu var reāli saņemt un kādi ir termiņi.",
-        "Ja projekts atbilst, vienosimies par sagatavošanu un nosūtīsim līgumu.",
+        "Ja projekts atbilst, nosūtīsim līgumu. Sagatavošana maksā 590 € (konkursa programmām 990 €), un 5 % no piešķirtā atbalsta – tikai pēc pozitīva lēmuma.",
         "Pieteikuma dokumentus sagatavojam aptuveni 5–10 darba dienu laikā pēc tam, kad saņemti visi dati."
       ]
     : [
         "2 darba dienu laikā nosūtīsim atbildi: kura programma Jums der, cik lielu atbalstu var saņemt un līdz kuram datumam jāpiesakās.",
-        "Ja viss der, sagatavosim pieteikumu Jūsu vietā. Sākumā tas ir bez maksas, 10 % no atbalsta maksājat tikai pēc tā izmaksas.",
+        "Ja viss der, noslēgsim līgumu un sagatavosim pieteikumu Jūsu vietā. Sagatavošana maksā 99 €, bet 7 % no atbalsta maksājat tikai pēc tā izmaksas. Maksājuma pieprasījumu pēc uzstādīšanas sagatavojam mēs.",
         "Kad saņemsim visus datus, pieteikums būs gatavs aptuveni 3–5 darba dienu laikā."
       ];
   const ask = company
