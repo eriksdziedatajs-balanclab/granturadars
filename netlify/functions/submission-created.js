@@ -70,6 +70,7 @@ function internalMail(d) {
 exports.handler = async (event) => {
   try {
     const { payload } = JSON.parse(event.body || "{}");
+    console.log("submission-created izsaukta:", payload && payload.form_name, "| SMTP iestatīts:", !!process.env.SMTP_HOST, !!process.env.SMTP_PASS);
     if (!payload || payload.form_name !== "pieteikums") return { statusCode: 200, body: "skip" };
     const d = payload.data || {};
     const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_FROM, MAIL_TO } = process.env;
