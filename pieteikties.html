@@ -62,12 +62,15 @@
 <label>Būvēta (gads)<input name="p_gads" inputmode="numeric"></label>
 <label>Vai esat īpašnieks?<select name="p_ipasnieks" required><option value="">Izvēlies</option><option>Jā, vienīgais</option><option>Jā, ar kopīpašniekiem</option><option>Nē</option></select></label>
 <label>Deklarēts šajā adresē?<select name="p_deklarets"><option value="">Izvēlies</option><option>Jā</option><option>Nē</option><option>Plānoju</option></select></label>
+<label>Vai māja nodota ekspluatācijā?<select name="p_ekspluatacija"><option value="">Izvēlies</option><option>Jā</option><option>Vēl nē</option><option>Nezinu</option></select></label>
+<label>Latvijas Goda ģimenes apliecība? <small>(3+ bērni, atbalsts 85% nevis 70%)</small><select name="p_goda"><option value="">Izvēlies</option><option>Jā</option><option>Nē</option></select></label>
 </div></fieldset>
 
 <fieldset data-for="privatpersona" disabled><legend>Apkure un plāni</legend>
 <div class="row2">
 <label>Pašreizējā apkure<select name="p_apkure" required><option value="">Izvēlies</option><option>Gāzes katls</option><option>Malkas vai granulu katls</option><option>Elektriskā apkure</option><option>Siltumsūknis</option><option>Centralizētā siltumapgāde</option><option>Cits</option></select></label>
-<label>Elektrības patēriņš gadā, kWh <small>(aptuveni)</small><input name="p_kwh" inputmode="numeric"></label>
+<label>Elektrības patēriņš <b>gadā</b>, kWh <small>(aptuveni; redzams elektrības tirgotāja portālā)</small><input name="p_kwh" inputmode="numeric" placeholder="Piemēram: 4500"></label>
+<label>Vai iekārtas jau nopirktas?<select name="p_nopirkts"><option value="">Izvēlies</option><option>Nē, vēl plānoju</option><option>Jā, pēc 12.09.2026</option><option>Jā, pirms 12.09.2026</option></select></label>
 </div>
 <div><span style="font-weight:600;font-size:15px">Ko gribat ierīkot?</span>
 <div class="checks" style="margin-top:8px">

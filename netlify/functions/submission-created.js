@@ -11,7 +11,7 @@ const LABELS = {
   u_summa: "Investīcijas apjoms", u_kad: "Kad sākt", u_programma: "Programma",
   u_kredits: "Kredīts", u_pasu: "Pašu līdzekļi",
   p_vieta: "Īpašuma vieta", p_veids: "Mājokļa veids", p_ipasnieks: "Īpašnieks",
-  p_deklarets: "Deklarēts", p_gads: "Būvniecības gads", p_platiba: "Platība",
+  p_deklarets: "Deklarēts", p_ekspluatacija: "Nodota ekspluatācijā", p_goda: "Goda ģimene", p_nopirkts: "Iekārtas nopirktas", p_gads: "Būvniecības gads", p_platiba: "Platība",
   p_apkure: "Apkure", p_kwh: "Patēriņš kWh", p_plani: "Plāni", p_piezimes: "Piezīmes",
   papildus: "Papildu palīdzība", piekrisana: "Piekrišana"
 };
