@@ -25,7 +25,7 @@ function clientMail(d) {
   const steps = company
     ? [
         "2 darba dienu laikā nosūtīsim izvērtējumu: kurām programmām projekts atbilst, cik lielu atbalstu var reāli saņemt un kādi ir termiņi.",
-        "Ja projekts atbilst, nosūtīsim līgumu. Sagatavošana maksā 590 € (konkursa programmām 990 €), un 5 % no piešķirtā atbalsta – tikai pēc pozitīva lēmuma.",
+        "Ja projekts atbilst, nosūtīsim līgumu. Sagatavošana maksā 590 € (konkursa programmām 990 €) + PVN, un 5 % no piešķirtā atbalsta (+ PVN) – tikai pēc pozitīva lēmuma.",
         "Pieteikuma dokumentus sagatavojam aptuveni 5–10 darba dienu laikā pēc tam, kad saņemti visi dati."
       ]
     : [
