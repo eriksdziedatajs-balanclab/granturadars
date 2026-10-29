@@ -12,7 +12,7 @@ const LABELS = {
   u_kredits: "Kredīts", u_pasu: "Pašu līdzekļi",
   p_vieta: "Īpašuma vieta", p_veids: "Mājokļa veids", p_ipasnieks: "Īpašnieks",
   p_deklarets: "Deklarēts", p_ekspluatacija: "Nodota ekspluatācijā", p_goda: "Goda ģimene", p_nopirkts: "Iekārtas nopirktas", p_gads: "Būvniecības gads", p_platiba: "Platība",
-  p_apkure: "Apkure", p_kwh: "Patēriņš kWh", p_plani: "Plāni", p_piezimes: "Piezīmes",
+  p_apkure: "Apkure", p_kwh: "Patēriņš kWh mēnesī", p_plani: "Plāni", p_piezimes: "Piezīmes",
   papildus: "Papildu palīdzība", piekrisana: "Piekrišana"
 };
 
@@ -56,6 +56,8 @@ info@granturadars.lv · granturadars.lv`;
 }
 
 function internalMail(d) {
+  const kwh = parseFloat(String(d.p_kwh || "").replace(",", ".").replace(/[^0-9.]/g, ""));
+  if (kwh > 0) d = { ...d, p_kwh: `${d.p_kwh} (gadā ~${Math.round(kwh * 12)} kWh)` };
   const rows = Object.keys(LABELS)
     .filter((k) => d[k] !== undefined && d[k] !== "")
     .map((k) => `<tr><td style="padding:4px 10px;color:#555">${LABELS[k]}</td><td style="padding:4px 10px">${esc(val(d[k]))}</td></tr>`)
