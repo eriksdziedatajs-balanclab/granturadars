@@ -1,0 +1,8 @@
+{
+  "name": "granturadars",
+  "private": true,
+  "description": "Grantu Radars – statiska vietne + Netlify funkcija pieteikumu e-pastiem",
+  "dependencies": {
+    "nodemailer": "6.9.16"
+  }
+}
