@@ -79,7 +79,9 @@ exports.handler = async (event) => {
     }
     const port = Number(SMTP_PORT || 465);
     const t = nodemailer.createTransport({ host: SMTP_HOST, port, secure: port === 465, auth: { user: SMTP_USER, pass: SMTP_PASS } });
-    const from = MAIL_FROM || `Grantu Radars <${SMTP_USER}>`;
+    // Sūtītājs vienmēr ir "Grantu Radars <info@...>"; vārdu var mainīt ar MAIL_FROM_NAME.
+    const fromAddr = ((MAIL_FROM || "").match(/<([^>]+)>/) || [])[1] || (/@/.test(MAIL_FROM || "") ? MAIL_FROM.trim() : SMTP_USER);
+    const from = { name: process.env.MAIL_FROM_NAME || "Grantu Radars", address: fromAddr };
     const to = MAIL_TO || SMTP_USER;
 
     const jobs = [t.sendMail({ from, to, replyTo: d.epasts || undefined, ...internalMail(d) })];
