@@ -86,9 +86,11 @@ exports.handler = async (event) => {
     const fromAddr = ((MAIL_FROM || "").match(/<([^>]+)>/) || [])[1] || (/@/.test(MAIL_FROM || "") ? MAIL_FROM.trim() : SMTP_USER);
     const from = { name: process.env.MAIL_FROM_NAME || "Grantu Radars", address: fromAddr };
     const to = MAIL_TO || SMTP_USER;
+    // Klientu atbildes iet tieši uz Gmail (inbox.eu pārsūtīšana neizlaiž vēstules no @gmail.com sūtītājiem).
+    const replyTo = process.env.REPLY_TO || "granturadars@gmail.com";
 
     const jobs = [t.sendMail({ from, to, replyTo: d.epasts || undefined, ...internalMail(d) })];
-    if (d.epasts && /@/.test(d.epasts)) jobs.push(t.sendMail({ from, to: d.epasts, replyTo: to, ...clientMail(d) }));
+    if (d.epasts && /@/.test(d.epasts)) jobs.push(t.sendMail({ from, to: d.epasts, replyTo, ...clientMail(d) }));
     const res = await Promise.allSettled(jobs);
     res.forEach((r) => r.status === "rejected" && console.error("E-pasts neizdevās:", r.reason && r.reason.message));
     return { statusCode: 200, body: "ok" };
