@@ -17,14 +17,14 @@
        pier: ["ja"] – tikai pierobežas novadiem (Alūksne, Balvi, Ludza, Krāslava, Augšdaugava)
        regPiez: piezīme konkrētam reģionam
 */
-window.DATI_ATJAUNOTI = "28.10.2026";
+window.DATI_ATJAUNOTI = "02.11.2026";
 
 window.PROGRAMMAS = [
   { id:"p81", iest:"ALTUM", nos:"Bezprocentu aizdevums uzņēmumiem pierobežā", statuss:"open", lidz:"2027-06-30",
-    summa:"0% procentu aizdevums (de minimis atbalsts); summa un termiņš jāprecizē ALTUM",
-    termins:"Pieteikties līdz 30.06.2027 (jāprecizē ALTUM)",
+    summa:"0% procentu likme jauniem ALTUM aizdevumiem līdz 01.01.2029; summa pēc konkrētā aizdevuma nosacījumiem (apstiprināti 9 000 € – 1 milj. €)",
+    termins:"Pieteikties līdz 30.06.2027 vai kamēr ir finansējums",
     kam:"Uzņēmumi, arī lauksaimnieki, Alūksnes, Balvu, Ludzas, Krāslavas un Augšdaugavas novadā. Procentu atlaide samazina uzņēmuma de minimis limitu.",
-    avots:"https://www.lsm.lv/raksts/zinas/ekonomika/21.07.2026-dala-lauksaimnieku-pierobeza-kritize-altum-bezprocentu-aizdevumu-var-ierobezot-citas-atbalsta-iespejas.a655324/",
+    avots:"https://lpr.gov.lv/lv/2026/altum-papildina-finansejumu-0-likmes-piedavajumam/",
     f:{ reg:["latgale","vidzeme"], pier:["ja"] } },
   { id:"p02", iest:"LIAA", nos:"Inovāciju vaučeri", statuss:"open",
     summa:"45–100% izmaksu, līdz 25 000 € vienam produktam",
@@ -90,11 +90,11 @@ window.PROGRAMMAS = [
     f:{ izm:["mikro","mazs","videjs"], plani:["apmacibas","produkts"] } },
 
   { id:"p12", iest:"ALTUM", nos:"Uzņēmējdarbības zaļināšana ar kapitāla atlaidi", statuss:"open",
-    summa:"Aizdevums līdz 10 milj. €, kapitāla atlaide līdz 30%",
-    termins:"Kamēr ir finansējums",
-    kam:"Energoefektivitāte un atjaunojamā enerģija pašpatēriņam. Pirms pieteikuma vajadzīgs energoaudits.",
-    avots:"https://www.altum.lv/pakalpojumi/biznesam/uznemejdarbibas-zalinasanas-aizdevums-vai-garantija-ar-kapitala-atlaidi/",
-    f:{ plani:["energo"], regPiez:{ riga:"Rīgas uzņēmumiem pieteikšanās atveras 16.11.2026.", pieriga:"Pierīgas uzņēmumiem pieteikšanās atveras 16.11.2026." } } },
+    summa:"Aizdevums līdz 1 milj. € (Rīgā un Pierīgā, kā arī lielajiem uzņēmumiem) vai līdz 10 milj. € (MVU ārpus Rīgas reģiona); kapitāla atlaide līdz 30%",
+    termins:"Kamēr ir finansējums; projekti jāpabeidz līdz 2029. g. februārim",
+    kam:"Energoefektivitāte un atjaunojamā enerģija pašpatēriņam. Pirms pieteikuma vajadzīgs energoaudits. No 16.11.2026 arī lielie uzņēmumi.",
+    avots:"https://www.altum.lv/en/services/enterprises/green-transition-loan-or-guarantee-with-capital-rebate/",
+    f:{ plani:["energo"], regPiez:{ riga:"Rīgas uzņēmumiem pieteikšanās atveras 16.11.2026.; aizdevums līdz 1 milj. €.", pieriga:"Pierīgas uzņēmumiem pieteikšanās atveras 16.11.2026.; aizdevums līdz 1 milj. €." } } },
 
   { id:"p13", iest:"ALTUM", nos:"Starta aizdevums", statuss:"open",
     summa:"Līdz 250 000 €, likme no 4,9%",
@@ -163,7 +163,7 @@ window.PROGRAMMAS = [
     summa:"60 000 € vienreizējs maksājums",
     termins:"Pieteikšanās līdz 03.11.2026 LAD EPS",
     kam:"Gados jaunais lauksaimnieks, kas pirmo reizi izveido vai pārņem saimniecību.",
-    avots:"https://kurzemesregions.lv/pieejams-atbalsts-jaunajiem-lauksaimniekiem-uznemejdarbibas-uzsaksanai/",
+    avots:"https://www.lad.gov.lv/lv/katalogs/la-6-atbalsts-gados-jaunajiem-lauksaimniekiem-uznemejdarbibas-uzsaksanai",
     f:{ noz:["lauks"], vecMax:1 } },
 
   { id:"p63", iest:"LAD", nos:"Ieguldījumi lauku saimniecību konkurētspējai (rudens kārta)", statuss:"soon", lidz:"2026-12-09",
@@ -214,7 +214,7 @@ window.PASVALDIBAS = [
   { id:"p70", reg:"pieriga", nos:"Ķekava, Ādaži, Ropaži, Salaspils: atbalsts remigrantiem", summa:"Līdz 12 000 €", termins:"Parasti rudenī (2026. g. kārta jāprecizē)", statuss:"yearly", piez:"Remigrantiem, kas sāk uzņēmējdarbību.", avots:"https://rpr-business.lv/pierigas-novados-ar-granta-programmu-atbalstis-remigrantu-uznemumu-un-jaunu-darbavietu-veidosanu/" },
   { id:"p45p", reg:"pieriga", nos:"Jūrmala: grantu programma \"Augšup\" (ar SEB)", summa:"Līdz 8 000 €", termins:"Parasti pavasarī", statuss:"yearly", piez:"Jauniem uzņēmumiem.", avots:"https://www.riga.lv/lv/jaunums/rigas-pasvaldiba-2026gada-turpina-dalibu-grantu-programma-augsup-pieteiksanas-no-1marta" },
 
-  { id:"p41", reg:"vidzeme", nos:"Madonas novads: \"Madona var labāk!\"", summa:"Līdz 6 000 € jauniem, līdz 2 000 € pārējiem", termins:"Līdz 30.10.2026 plkst. 16.00; kārtas 4 reizes gadā", statuss:"closing", lidz:"2026-10-30", avots:"https://businessmadona.lv/madona-var-labak/" },
+  { id:"p87", reg:"vidzeme", nos:"LEADER \"Brasla\": Dikļu, Vaidavas, Zilākalna un Lēdurgas pagasts", summa:"Līdz 100 000 € projektam (vai \"Lauku biļete\" līdz 15 000 €), parasti 50%", termins:"Pieteikšanās līdz 10.11.2026 LAD EPS", statuss:"closing", lidz:"2026-11-10", avots:"https://www.valmierasnovads.lv/izsludinata-leader-projektu-konkursa-vi-karta-uznemejdarbibas-atbalstam/" },
   { id:"p35", reg:"vidzeme", nos:"Valmiera: atbalsta programma \"ZĪLE\"", summa:"2 000–10 000 €", termins:"Parasti februārī–martā", statuss:"yearly", avots:"https://developvalmiera.lv/atbalsta-programma-zile/" },
   { id:"p36", reg:"vidzeme", nos:"Cēsis: grantu konkurss \"Uzrāviens\"", summa:"Līdz 5 000 € (+3 000 € aprites ekonomikai)", termins:"Parasti pavasarī", statuss:"yearly", avots:"https://www.cesis.lv/lv/novads/aktualitates/zinas/uznemejdarbiba/izsludinats-cesu-novada-uznemejdarbibas-grantu-konkurss-uzraviens-2026/" },
   { id:"p43", reg:"vidzeme", nos:"Smiltene: \"Esi uzņēmējs Smiltenes novadā!\"", summa:"Līdz 4 000 €", termins:"Parasti maijā–jūnijā", statuss:"yearly", avots:"https://www.smiltenesnovads.lv/lv/jaunums/desmito-reizi-izsludinats-konkurss-esi-uznemejs-smiltenes-novada" },
@@ -225,7 +225,7 @@ window.PASVALDIBAS = [
   { id:"p30", reg:"kurzeme", nos:"Tukums: \"Radi Tukuma novadam\"", summa:"Līdz 5 000 €", termins:"Parasti aprīlī–maijā", statuss:"yearly", piez:"Jauniem uzņēmumiem līdz 3 gadiem.", avots:"https://lvportals.lv/dienaskartiba/388073-iespeja-sanemt-lidz-5000-eur-sava-biznesa-saksanai-tukuma-novada-izsludinats-uznemejdarbibas-atbalsta-konkurss-2026" },
   { id:"p40", reg:"kurzeme", nos:"Dienvidkurzeme: līdzfinansējuma konkurss", summa:"Līdz 4 000 €, līdz 70%", termins:"Parasti janvārī", statuss:"yearly", avots:"https://raca.lv/izsludinats-pasvaldibas-lidzfinansejuma-konkurss-uznemejdarbibas-veicinasanai-2026-gada/" },
   { id:"p42", reg:"kurzeme", nos:"Liepāja: MVU līdzfinansējuma konkurss", summa:"Līdz 10 000 €", termins:"Termiņš jāprecizē", statuss:"yearly", avots:"https://business.gov.lv/en/support-opportunities/kurzeme-region" },
-  { id:"p47", reg:"kurzeme", nos:"Kuldīga: jauno uzņēmēju biznesa ideju konkurss", summa:"Līdz 5 000 €", termins:"Termiņš jāprecizē", statuss:"yearly", avots:"https://kuldigasnovads.lv/izsludinats-konkurss-pasvaldiba-palielina-atbalstu-jauno-uznemeju-biznesa-idejam-lidz-5000-eiro/" },
+  { id:"p47", reg:"kurzeme", nos:"Kuldīga: jauno uzņēmēju biznesa ideju konkurss", summa:"500–5 000 €, līdz 80%", termins:"Līdz 15.11.2026 vai kamēr ir finansējums", statuss:"closing", lidz:"2026-11-15", piez:"Jauniem uzņēmējiem, kas sāk darbību Kuldīgas novadā.", avots:"https://kurzemesregions.lv/izsludinats-konkurss-pasvaldiba-palielina-atbalstu-jauno-uznemeju-biznesa-idejam-lidz-5000-eiro/" },
   { id:"p69", reg:"kurzeme", nos:"Ventspils: atbalsts telpu nomas maksai", summa:"Provizoriski 10 000 € gadā", termins:"Kārtība jāprecizē", statuss:"yearly", avots:"https://www.ventspils.lv/app/uploads/2026/03/Pasvaldibas_atbalsts-1.pdf" },
 
   { id:"p38", reg:"zemgale", nos:"Jelgava: atbalsts komersantiem", summa:"Līdz 20 000 €", termins:"Nākamā kārta jāprecizē", statuss:"yearly", avots:"https://www.jelgava.lv/jaunumi/uznemejdarbibas-atbalsta-grantu-konkursa-finansejumu-sanem-devini-uznemumi/" },

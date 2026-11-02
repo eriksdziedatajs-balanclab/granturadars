@@ -267,6 +267,12 @@ section.block{padding-block:96px}
 .honest{background:var(--quiet);border-radius:var(--r);padding:36px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px;align-items:start}
 .honest p{font-size:19px}
 @media (max-width:760px){.honest{grid-template-columns:1fr;padding:26px}}
+.steps5{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;gap:12px}
+.steps5 li{counter-increment:s;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:14px;row-gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.steps5 li::before{content:counter(s);grid-row:span 2;width:36px;height:36px;border-radius:50%;background:var(--go-bg);color:#fff;font-weight:700;display:grid;place-items:center}
+.steps5 b{font-size:18px}.steps5 span{color:var(--muted);font-size:16px;line-height:1.5}
+.tipline{margin-top:16px;padding:14px 16px;border-radius:12px;background:var(--quiet);font-size:16px}
+.warnbox{border:1px solid #d9a441;background:#fdf5e6;color:#4a3305;border-radius:12px;padding:14px 16px;margin:0 0 16px;font-size:16px;line-height:1.5}
 .faq-grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:48px;align-items:start}
 @media (max-width:900px){.faq-grid{grid-template-columns:1fr;gap:24px}}
 .faq{display:grid;gap:10px}
@@ -439,17 +445,35 @@ label.f span.opt-l{font-weight:400;color:var(--muted)}
       <div class="how">
         <div class="how-step">
           <div class="mock" aria-hidden="true"><span class="mq">Ko plāno ar savu mājokli?</span><div class="mbar"><i style="width:66%"></i></div><span class="mo on">Saules paneļi un akumulators</span><span class="mo on">Siltumsūknis vai apkures nomaiņa</span><span class="mo">Siltināšana un renovācija</span><span class="mo">Mājokļa iegāde</span></div>
-          <span class="k">1. SOLIS</span><h3>Atbildi uz 6 jautājumiem</h3><p>Kur atrodas mājoklis, kāds tas ir, vai esi īpašnieks, ko plāno un vai ģimenē ir bērni.</p>
+          <span class="k">1. SOLIS</span><h3>Atbildi uz dažiem jautājumiem</h3><p>Kur atrodas mājoklis, kāds tas ir, vai esi īpašnieks, ko plāno, ar ko kurini tagad un vai ģimenē ir bērni.</p>
         </div>
         <div class="how-step">
           <div class="mock" aria-hidden="true"><div class="mr"><small>Vides inv. fonds <span>Atvērta</span></small><b>Atjaunojamā enerģija mājsaimniecībām</b><span>Līdz 70% iekārtas cenas</span></div><div class="mr"><small>Pašvaldība <span>Atvērta</span></small><b>Kanalizācijas pieslēgums</b><span>Līdz 2 000 €</span></div><div class="mr"><small>ALTUM <span>Atvērta</span></small><b>Mājokļa garantija ģimenēm</b><span>Pirmā iemaksa no 5%</span></div></div>
           <span class="k">2. SOLIS</span><h3>Saņem savu sarakstu</h3><p>Kāds atbalsts tev pienākas, cik tas ir un līdz kuram datumam jāpiesakās.</p>
         </div>
         <div class="how-step">
-          <div class="mock" aria-hidden="true"><span class="mq">Saules paneļi ar atbalstu</span><span class="ck"><i></i>Pārbaudīta atbilstība</span><span class="ck"><i></i>Uzstādītāja piedāvājums</span><span class="ck"><i></i>Pieteikums ekii.lv</span><span class="ck todo"><i></i>Uzstādīšana</span><span class="ck todo"><i></i>Atbalsta izmaksa</span></div>
+          <div class="mock" aria-hidden="true"><span class="mq">Saules paneļi ar atbalstu</span><span class="ck"><i></i>Pārbaudīta atbilstība</span><span class="ck"><i></i>Uzstādītāja piedāvājums</span><span class="ck"><i></i>Uzstādīšana</span><span class="ck todo"><i></i>Pieteikums ekii.lv</span><span class="ck todo"><i></i>Atbalsta izmaksa</span></div>
           <span class="k">3. SOLIS</span><h3>Piesakies pats vai ar palīdzību</h3><p>Paskaidrojam, kādi dokumenti vajadzīgi, un palīdzam ar pieteikumu, ja vēlies.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="block" id="process" aria-labelledby="h-proc">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Saules paneļi, siltumsūknis, katls</span>
+        <h2 id="h-proc">Kā saņemt valsts atbalstu: 5 soļi</h2>
+        <p>Atbalstu izmaksā tikai <b>pēc</b> tam, kad iekārta ir uzstādīta un apmaksāta. Līdz tam visu apmaksā pats, tāpēc vispirms pārliecinies, ka atbalsts tev pienākas.</p>
+      </div>
+      <ol class="steps5">
+        <li><b>Pārbaudi, vai atbalsts tev pienākas – pirms kaut ko pērc</b><span>Siltumsūknim vai granulu katlam atbalstu dod tikai tad, ja mājā jau ir uzstādīts un lietots gāzes, ogļu, šķidrā kurināmā, malkas vai granulu katls un tev ir kurināmā čeki vai rēķini par pēdējiem 12 mēnešiem.</span></li>
+        <li><b>Atrodi uzstādītāju un saņem tāmi</b><span>Tāmē iekārtas cenai jābūt norādītai atsevišķi no darba – atbalstu dod tikai par iekārtu, ne par montāžu.</span></li>
+        <li><b>Noslēdz līgumu, iekārtu nopērk un uzstāda</b><span>Bieži iekārtu piegādā pats uzstādītājs. Saglabā visus rēķinus un maksājumu apliecinājumus.</span></li>
+        <li><b>Iesniedz pieteikumu ekii.lv</b><span>Vajadzīgas iekārtas fotogrāfijas, uzstādītāja pieņemšanas un nodošanas akts, tāme, rēķini un, ja tas ir siltumsūknis vai katls, kurināmā čeki par 12 mēnešiem.</span></li>
+        <li><b>Vides investīciju fonds pieteikumu izskata un izmaksā atbalstu</b><span>Nauda tiek ieskaitīta tavā bankas kontā.</span></li>
+      </ol>
+      <p class="tipline"><b>Padoms:</b> sāc glabāt kurināmā čekus jau tagad. Bez tiem atbalstu siltumsūknim vai katlam nepiešķirs.</p>
     </div>
   </section>
 
@@ -505,8 +529,11 @@ label.f span.opt-l{font-weight:400;color:var(--muted)}
       </div>
       <div class="faq">
         <details><summary>Vai tests ir bezmaksas?</summary><div class="ans">Jā. Tests un programmu saraksts ir bez maksas un bez saistībām.</div></details>
-        <details><summary>Cik maksā, ja jūs sagatavojat pieteikumu?</summary><div class="ans">Pārbaude ir bez maksas. Ja vienojamies par sagatavošanu, 99 € maksā pirms darba sākuma, bet 7% no saņemtā atbalsta – tikai tad, kad atbalstu izmaksā. Mēs neatkarīgi pārbaudām, vai iekārta der atbalstam, salīdzinām uzstādītāju piedāvājumus, sagatavojam pieteikumu un pēc uzstādīšanas arī maksājuma pieprasījumu. Sīkāk – <a href="/cenas.html">cenu lapā</a>.</div></details>
-        <details><summary>Saules paneļi vai siltumsūknis jau ir uzstādīts. Vai vēl var saņemt atbalstu?</summary><div class="ans">Dažos gadījumos jā. Pēc 2026. gada septembra izmaiņām apkures iekārtām, kas uzstādītas pēc 2022. gada 9. marta, atbalstu var pieprasīt līdz 2026. gada beigām. Precīzus nosacījumus pārbaudi ekii.lv.</div></details>
+        <details><summary>Cik maksā, ja jūs sagatavojat pieteikumu?</summary><div class="ans">Pārbaude ir bez maksas. Ja vienojamies par sagatavošanu, 99 € maksā pirms darba sākuma, bet 7% no saņemtā atbalsta – tikai tad, kad atbalstu izmaksā. Mēs pirms pirkuma pārbaudām, vai iekārta der atbalstam, salīdzinām uzstādītāju piedāvājumus un tāmes, un pēc uzstādīšanas sagatavojam visu pieteikumu ekii.lv. Sīkāk – <a href="/cenas.html">cenu lapā</a>.</div></details>
+        <details><summary>Vai atbalsts der jebkuram siltumsūknim vai granulu katlam?</summary><div class="ans">Nē. Siltumsūknim vai granulu katlam atbalsts pienākas tikai tad, ja tas aizstāj vai papildina mājā jau uzstādītu gāzes, ogļu, šķidrā kurināmā, malkas vai granulu katlu un tev ir kurināmā čeki vai rēķini par pēdējiem 12 mēnešiem. Ja māja apsildīta ar elektrību vai katla nav, šis atbalsts neder. Pirms pērc iekārtu, izmanto mūsu bezmaksas pārbaudi.</div></details>
+        <details><summary>Kādi čeki vajadzīgi un kāpēc?</summary><div class="ans">Vides investīciju fonds pārbauda, ar ko māja kurināta pēdējos 12 mēnešos. Der čeki vai rēķini par malku, granulām, oglēm, šķidro kurināmo vai gāzi (gāzes rēķini parasti ir piegādātāja portālā). Ja malka pirkta bez čeka, to pierādīt būs grūti, tāpēc sāc glabāt čekus jau tagad.</div></details>
+        <details><summary>Kurinu ar malku no sava meža. Ko darīt?</summary><div class="ans">Noteikumi prasa dokumentus par kurināmā patēriņu 12 mēnešos, bet nenosaka, kā pierādīt malku no sava meža. Uzraksti mums pirms iekārtas pirkšanas – tavu gadījumu pārbaudīsim Vides investīciju fondā.</div></details>
+        <details><summary>Saules paneļi vai siltumsūknis jau ir uzstādīts. Vai vēl var saņemt atbalstu?</summary><div class="ans">Dažos gadījumos jā. Pēc 2026. gada septembra izmaiņām apkures iekārtām, kas uzstādītas pēc 2022. gada 9. marta, atbalstu var pieprasīt līdz 2026. gada beigām. Siltumsūknim un granulu katlam skaties arī jautājumu augstāk par esošo katlu. Precīzus nosacījumus pārbaudi ekii.lv.</div></details>
         <details><summary>Kas ir Goda ģimene un kāpēc tai lielāks atbalsts?</summary><div class="ans">Goda ģimenes apliecību saņem ģimenes ar trim un vairāk bērniem. Atjaunojamās enerģijas programmā tām atbalsts ir 85% izmaksu, nevis 70%.</div></details>
         <details><summary>Dzīvoju daudzdzīvokļu mājā. Ko varu darīt es?</summary><div class="ans">Renovāciju un saules paneļus daudzdzīvokļu mājai piesaka visa māja kopā, caur pilnvaroto personu vai apsaimniekotāju. Tu vari ierosināt kopsapulci, un mēs palīdzam saprast, kādu atbalstu māja var saņemt.</div></details>
         <details><summary>Vai jūs esat valsts iestāde?</summary><div class="ans">Nē. Grantu Radars ir privāts pakalpojums. Lēmumu par atbalstu pieņem Vides investīciju fonds, ALTUM, banka vai pašvaldība.</div></details>
@@ -663,12 +690,17 @@ var Q=[
    o:[["ja","Jā, esmu īpašnieks vai līdzīpašnieks"],["ne","Nē, īrēju vai dzīvoju pie radiem"]]},
   {k:"plani",multi:true,t:"Ko plāno ar savu mājokli?",s:"Vari izvēlēties vairākus.",
    o:[["saule","Saules paneļi un akumulators"],["siltumsuknis","Siltumsūknis vai apkures nomaiņa"],["siltinasana","Siltināšana un renovācija"],["kanalizacija","Pieslēgums kanalizācijai"],["majoklis","Iegādāties mājokli"],["nezinu","Vēl nav skaidrs"]]},
+  {k:"apk",when:function(a){return a.maj!=="dzivoklis"&&a.maj!=="nav"&&(a.plani||[]).indexOf("siltumsuknis")>=0;},t:"Ar ko māju apkurini tagad?",
+   o:[["gaze","Gāzes katls"],["ogles","Ogļu vai šķidrā kurināmā katls"],["malka","Malkas vai granulu katls"],["elektr","Elektrība (radiatori, sildītāji)"],["cits","Krāsns, kamīns vai cits"]]},
+  {k:"ceki",when:function(a){return a.maj!=="dzivoklis"&&a.maj!=="nav"&&(a.plani||[]).indexOf("siltumsuknis")>=0&&["gaze","ogles","malka"].indexOf(a.apk)>=0;},t:"Vai ir čeki vai rēķini par kurināmo pēdējos 12 mēnešos?",s:"Piemēram, par malku, granulām vai gāzi. Tie vajadzīgi atbalstam siltumsūknim vai katlam.",
+   o:[["ja","Jā, par visiem 12 mēnešiem"],["dalji","Daļēji vai mazāk par 12 mēnešiem"],["ne","Nav (piem., malka no sava meža vai pirkta bez čeka)"]]},
   {k:"berni",t:"Vai ģimenē ir bērni līdz 23 gadiem?",s:"Tas ietekmē mājokļa garantijas un Goda ģimenes atbalstu.",
    o:[["nav","Nav"],["1-2","1 vai 2 bērni (vai gaidām bērnu)"],["3plus","3 un vairāk bērni"]]},
   {k:"par",multi:true,t:"Vai kas no šī attiecas uz tevi?",s:"Vari izvēlēties vairākus vai \"Nekas no šī\".",
    o:[["jauns","Man ir 18–35 gadi un profesionālā vai augstākā izglītība"],["karavirs","Esmu NBS profesionālā dienesta karavīrs"],["nekas","Nekas no šī"]]}
 ];
 var MULTI={plani:"nezinu",par:"nekas"};
+function QA(){ return Q.filter(function(q){ return !q.when||q.when(ans); }); }
 var LABEL={}; Q.forEach(function(q){ q.o.forEach(function(o){ LABEL[q.k+":"+o[0]]=o[1]; }); });
 
 function fits(p,a){
@@ -772,9 +804,9 @@ dlg.addEventListener("close",function(){ document.documentElement.style.overflow
 each("[data-start]",function(b){ b.addEventListener("click",function(e){openTest(e);}); });
 $("needs").addEventListener("click",function(e){ var b=e.target.closest("[data-need]"); if(b) openTest({currentTarget:b},b.getAttribute("data-need")); });
 $("tClose").addEventListener("click",closeTest);
-function setProgress(i){ var n=Q.length; stepEl.textContent=i<n?(i+1)+" no "+n:"Rezultāts"; bar.style.width=(i<n?((i+1)/n*100):100)+"%"; }
+function setProgress(i){ var n=QA().length; stepEl.textContent=i<n?(i+1)+" no "+n:"Rezultāts"; bar.style.width=(i<n?((i+1)/n*100):100)+"%"; }
 function renderQ(){
-  var q=Q[step]; setProgress(step);
+  var q=QA()[step]; setProgress(step);
   rEl.hidden=true; qEl.hidden=false; back.disabled=step===0;
   var multi=!!q.multi, arr=multi?ans[q.k]:null;
   var html='<div class="t-q"><h2 id="tTitle">'+esc(q.t)+'</h2>'+(q.s?'<p>'+esc(q.s)+'</p>':'')+'</div><div class="opts'+(multi?' multi':'')+'" role="'+(multi?'group':'radiogroup')+'" aria-labelledby="tTitle">';
@@ -790,7 +822,7 @@ function renderQ(){
 }
 qEl.addEventListener("click",function(e){
   var b=e.target.closest(".opt"); if(!b) return;
-  var q=Q[step],v=b.getAttribute("data-v");
+  var q=QA()[step],v=b.getAttribute("data-v");
   if(q.multi){
     var none=MULTI[q.k], arr=ans[q.k], i=arr.indexOf(v);
     if(v===none) ans[q.k]=i>=0?[]:[none];
@@ -804,13 +836,17 @@ qEl.addEventListener("click",function(e){
   }
 });
 next.addEventListener("click",advance);
-back.addEventListener("click",function(){ if(!rEl.hidden){ step=Q.length-1; renderQ(); return; } if(step>0){ step--; renderQ(); } });
-function advance(){ if(step<Q.length-1){ step++; renderQ(); } else showResults(); }
+back.addEventListener("click",function(){ if(!rEl.hidden){ step=QA().length-1; renderQ(); return; } if(step>0){ step--; renderQ(); } });
+function advance(){ if(step<QA().length-1){ step++; renderQ(); } else showResults(); }
 function showResults(){
-  setProgress(Q.length); qEl.hidden=true; rEl.hidden=false; next.hidden=true;
+  setProgress(QA().length); qEl.hidden=true; rEl.hidden=false; next.hidden=true;
   var a=ans, list=match(a);
   var now=list.filter(function(p){return p.statuss!=="soon";}), later=list.filter(function(p){return p.statuss==="soon";});
   var h='<div class="res-head"><span class="eyebrow">Tavs rezultāts</span><h2>'+(list.length?'Atradām '+list.length+' '+(one(list.length)?'programmu, kas tev varētu derēt':'programmas, kas tev varētu derēt'):'Šobrīd tiešu atbilstību neatradām')+'</h2><p>Saraksts balstīts uz tavām atbildēm. Precīzus noteikumus vienmēr pārbaudi oficiālajā avotā.</p></div>';
+  var qk=QA().map(function(q){return q.k;}), heat=qk.indexOf("apk")>=0&&a.apk; if(qk.indexOf("ceki")<0) a=Object.assign({},a,{ceki:null});
+  if(heat&&(a.apk==="elektr"||a.apk==="cits")) h+='<div class="warnbox"><b>Svarīgi par siltumsūkni:</b> valsts atbalstu siltumsūknim vai granulu katlam dod tikai tad, ja tas aizstāj vai papildina mājā jau uzstādītu un lietotu katlu. Ja māju apsildi ar elektrību, krāsni vai kamīnu, šis atbalsts tev tagad neder. Saules paneļiem un akumulatoram atbalsts joprojām var būt pieejams. Pirms pērc iekārtu, uzraksti mums.</div>';
+  else if(heat&&a.ceki&&a.ceki!=="ja") h+='<div class="warnbox"><b>Svarīgi par siltumsūkni:</b> atbalstam jāpierāda, ar ko māja kurināta pēdējos 12 mēnešos – vajag čekus vai rēķinus par kurināmo. Sāc tos glabāt jau tagad. Ja kurini ar malku no sava meža, uzraksti mums – noskaidrosim, kā to pierādīt.</div>';
+  else if(heat&&a.ceki==="ja") h+='<div class="warnbox"><b>Labi:</b> saglabā kurināmā čekus – tie būs vajadzīgi pieteikumā.</div>';
   function note(p){ return (p.piezBerni&&a.berni==="3plus")?p.piezBerni:""; }
   if(now.length) h+='<div class="res-list">'+now.map(function(p){return card(p,why(p,a),note(p));}).join("")+'</div>';
   if(later.length) h+='<div class="res-sub"><h3>Drīzumā atvērsies</h3><p>Seko līdzi: šīm programmām gaidāma jauna kārta.</p></div><div class="res-list">'+later.map(function(p){return card(p,why(p,a),note(p));}).join("")+'</div>';
@@ -819,7 +855,7 @@ function showResults(){
     h+='<div class="empty">'+esc(tip)+'</div>';
   }
   $("tResList").innerHTML=h;
-  $("fAtbildes").value=Q.map(function(q){ return q.t+" "+(q.multi?(a[q.k]||[]).map(function(v){return LABEL[q.k+":"+v];}).join(", "):LABEL[q.k+":"+a[q.k]]); }).join("\n");
+  $("fAtbildes").value=QA().map(function(q){ return q.t+" "+(q.multi?(a[q.k]||[]).map(function(v){return LABEL[q.k+":"+v];}).join(", "):LABEL[q.k+":"+a[q.k]]); }).join("\n");
   $("fProgrammas").value=list.map(function(p){return p.iest+": "+p.nos+" ("+p.summa+"; "+p.termins+") "+p.avots;}).join("\n");
   body.scrollTop=0;
   var t=rEl.querySelector("h2"); if(t){ t.setAttribute("tabindex","-1"); t.focus({preventScroll:true}); }
