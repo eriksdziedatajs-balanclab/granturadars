@@ -1,7 +1,7 @@
 /* Grantu Radars – sīkdatņu piekrišana. Reklāmu/statistikas kodi ielādējas TIKAI pēc piekrišanas.
    Kodu ID ieraksta šeit, kad būs konti (t55). Tukšs ID = neko neielādē. */
 (function(){
-  var CFG={metaPixel:"",googleTag:""}; // piem. metaPixel:"1234567890", googleTag:"AW-123456789"
+  var CFG={metaPixel:"1315279077344835",googleTag:""}; // piem. metaPixel:"1234567890", googleTag:"AW-123456789"
   var KEY="gr-consent", MAX=1000*60*60*24*182;
   function read(){try{var v=JSON.parse(localStorage.getItem(KEY));if(v&&Date.now()-v.t<MAX)return v}catch(e){}return null}
   function save(st,ad){var v={st:!!st,ad:!!ad,t:Date.now()};try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}apply(v);hide()}
